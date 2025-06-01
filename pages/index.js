@@ -1,115 +1,321 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+// // /app/page.tsx (Landing Page Publik Super Elegan)
+// "use client";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// import Link from "next/link";
+// import { motion } from "framer-motion";
+// import { useEffect, useState } from "react";
+// import { db } from "@/lib/firebase";
+// import { collection, getDocs } from "firebase/firestore";
+// import Image from "next/image";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// export default function LandingPage() {
+//   const [produk, setProduk] = useState([]);
 
-export default function Home() {
+//   useEffect(() => {
+//     const fetchProduk = async () => {
+//       const snapshot = await getDocs(collection(db, "produk"));
+//       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+//       setProduk(data);
+//     };
+//     fetchProduk();
+//   }, []);
+
+//   return (
+//     <div className="bg-gradient-to-b from-white to-blue-50 font-sans text-gray-800 min-h-screen">
+//       {/* Navbar */}
+//       <header className="sticky top-0 bg-white shadow z-50">
+//         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+//           <h1 className="text-2xl font-bold text-blue-700">BrandStore</h1>
+//           <nav className="space-x-6 hidden md:flex">
+//             <Link href="/" className="hover:text-blue-600">Beranda</Link>
+//             <Link href="/#produk" className="hover:text-blue-600">Produk</Link>
+//             <Link href="/tentang" className="hover:text-blue-600">Tentang Kami</Link>
+//             <Link href="/kontak" className="hover:text-blue-600">Kontak</Link>
+//           </nav>
+//           <a href="https://wa.me/6281234567890" target="_blank" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-sm">
+//             Chat WhatsApp
+//           </a>
+//         </div>
+//       </header>
+
+//       {/* Hero Section */}
+//       <section className="relative text-center py-24 px-6 overflow-hidden bg-white">
+//         <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+//           Solusi Produk Digital & Teknologi Terkini
+//         </h2>
+//         <p className="text-lg text-gray-600 mb-6 max-w-xl mx-auto">
+//           Produk berkualitas dengan harga bersaing, bergaransi, dan dukungan penuh dari teknisi handal.
+//         </p>
+//         <Link href="#produk" className="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 transition">
+//           Lihat Produk
+//         </Link>
+//         <div className="absolute -top-10 -left-10 w-60 h-60 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+//         <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+//       </section>
+
+//       {/* Produk Section */}
+//       <section id="produk" className="py-20 px-6 bg-blue-50">
+//         <div className="max-w-7xl mx-auto">
+//           <h3 className="text-3xl font-semibold mb-8">Produk Terbaru</h3>
+//           <div className="grid md:grid-cols-3 gap-8">
+//             {produk.map((item) => (
+//               <motion.div
+//                 key={item.id}
+//                 whileHover={{ scale: 1.03 }}
+//                 className="bg-white rounded-xl shadow hover:shadow-xl overflow-hidden border transition"
+//               >
+//                 <Link href={`/produk/${item.id}`}>
+//                   <img
+//                     src={item.gambarUrl}
+//                     alt={item.nama}
+//                     className="h-48 w-full object-cover"
+//                   />
+//                   <div className="p-4">
+//                     <h4 className="text-lg font-bold mb-1">{item.nama}</h4>
+//                     <p className="text-sm text-gray-500 mb-2">{item.kategori}</p>
+//                     <p className="text-blue-600 font-semibold text-md">Rp {item.harga.toLocaleString()}</p>
+//                   </div>
+//                 </Link>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA */}
+//       <section className="text-center bg-blue-600 text-white py-12">
+//         <h3 className="text-2xl font-bold mb-4">Butuh Bantuan atau Penawaran Khusus?</h3>
+//         <a
+//           href="https://wa.me/6281234567890"
+//           target="_blank"
+//           className="bg-white text-blue-700 px-6 py-2 rounded font-medium hover:bg-gray-100"
+//         >
+//           Konsultasi Sekarang
+//         </a>
+//       </section>
+
+//       {/* Footer */}
+//       <footer className="text-sm text-center text-gray-600 py-6 bg-white">
+//         &copy; {new Date().getFullYear()} PT. BrandStore Indonesia. All rights reserved.
+//       </footer>
+//     </div>
+//   );
+// }
+
+
+
+// "use client";
+
+// import Link from "next/link";
+// import { motion } from "framer-motion";
+// import { useEffect, useState } from "react";
+// import { db } from "@/lib/firebase";
+// import { collection, getDocs } from "firebase/firestore";
+// import styles from "./LandingPage.module.scss";
+
+// export default function LandingPage() {
+//   const [produk, setProduk] = useState([]);
+
+//   useEffect(() => {
+//     const fetchProduk = async () => {
+//       const snapshot = await getDocs(collection(db, "produk"));
+//       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+//       setProduk(data);
+//     };
+//     fetchProduk();
+//   }, []);
+
+//   return (
+//     <div className={styles.container}>
+//       {/* Navbar */}
+//       <header className={styles.navbar}>
+//         <h1>BrandStore</h1>
+//         <nav>
+//           <Link href="/">Beranda</Link>
+//           <Link href="/#produk">Produk</Link>
+//           <Link href="/tentang">Tentang Kami</Link>
+//           <Link href="/kontak">Kontak</Link>
+//         </nav>
+//         <a
+//           href="https://wa.me/6281234567890"
+//           target="_blank"
+//           className={styles.waBtn}
+//         >
+//           Chat WhatsApp
+//         </a>
+//       </header>
+
+//       {/* Hero Section */}
+//       <section className={styles.hero}>
+//         <h2>Solusi Produk Digital & Teknologi Terkini</h2>
+//         <p>
+//           Produk berkualitas dengan harga bersaing, bergaransi, dan dukungan
+//           penuh dari teknisi handal.
+//         </p>
+//         <Link href="#produk">Lihat Produk</Link>
+//         <div className={`${styles.blob} ${styles.blob1}`}></div>
+//         <div className={`${styles.blob} ${styles.blob2}`}></div>
+//       </section>
+
+//       {/* Produk Section */}
+//       <section id="produk" className={styles.produkSection}>
+//         <h3>Produk Terbaru</h3>
+//         <div className={styles.grid}>
+//           {produk.map((item) => (
+//             <motion.div
+//               key={item.id}
+//               whileHover={{ scale: 1.02 }}
+//               className={styles.card}
+//             >
+//               <Link href={`/produk/${item.id}`}>
+//                 <img src={item.gambarUrl} alt={item.nama} />
+//                 <div className={styles.info}>
+//                   <h4>{item.nama}</h4>
+//                   <p className={styles.kategori}>{item.kategori}</p>
+//                   <p className={styles.harga}>
+//                     Rp {item.harga.toLocaleString("id-ID")}
+//                   </p>
+//                 </div>
+//               </Link>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </section>
+
+//       {/* CTA */}
+//       <section className={styles.cta}>
+//         <h3>Butuh Bantuan atau Penawaran Khusus?</h3>
+//         <a href="https://wa.me/6281234567890" target="_blank">
+//           Konsultasi Sekarang
+//         </a>
+//       </section>
+
+//       {/* Footer */}
+//       <footer className={styles.footer}>
+//         &copy; {new Date().getFullYear()} PT. BrandStore Indonesia. All rights reserved.
+//       </footer>
+//     </div>
+//   );
+// }
+
+
+
+// app/page.tsx
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { db } from "../lib/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import styles from "./LandingPage.module.scss";
+import FloatingChat from "./components/FloatingChat";
+import BannerSlider from "./components/BannerSlider";
+import SkeletonCard from "./components/SkeletonCard";
+import CategoryFilter from "./components/CategoryFilter";
+
+export default function LandingPage() {
+  const [produk, setProduk] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedKategori, setSelectedKategori] = useState("Semua");
+
+  useEffect(() => {
+    const fetchProduk = async () => {
+      const snapshot = await getDocs(collection(db, "produk"));
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setProduk(data);
+      setLoading(false);
+    };
+    fetchProduk();
+  }, []);
+
+  const produkTampil = selectedKategori === "Semua"
+    ? produk
+    : produk.filter((item) => item.kategori === selectedKategori);
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className={styles.container}>
+      {/* Navbar */}
+      <header className={styles.navbar}>
+        <h1>BrandStore</h1>
+        <nav>
+          <Link href="/">Beranda</Link>
+          <Link href="/#produk">Produk</Link>
+          <Link href="/tentang">Tentang Kami</Link>
+          <Link href="/kontak">Kontak</Link>
+        </nav>
+        <a
+          href="https://wa.me/6281234567890"
+          target="_blank"
+          className={styles.waBtn}
+        >
+          Chat WhatsApp
+        </a>
+      </header>
+
+      {/* Hero Carousel */}
+      {/* <section className={styles.heroCarousel}>
+        <BannerSlider />
+      </section> */}
+              <BannerSlider />
+
+      {/* Produk Section */}
+      <section id="produk" className={styles.produkSection}>
+        <h3>Produk Terbaru</h3>
+        <div className="sticky top-16 bg-white z-40 shadow px-4 py-2">
+          <CategoryFilter selected={selectedKategori} onSelect={setSelectedKategori} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
+        <div className={styles.grid}>
+          {loading ? (
+            Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+          ) : (
+            produkTampil.map((item) => (
+              <motion.div
+                key={item.id}
+                whileHover={{ scale: 1.02 }}
+                className={styles.card}
+              >
+                <Link href={`/produk/${item.id}`}>
+                  <div className="relative">
+                    <img src={item.gambarUrl} alt={item.nama} />
+                    {item.diskon && (
+                      <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded">
+                        {item.diskon}% OFF
+                      </span>
+                    )}
+                    <button className="absolute bottom-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+                      + Keranjang
+                    </button>
+                  </div>
+                  <div className={styles.info}>
+                    <h4>{item.nama}</h4>
+                    <p className={styles.kategori}>{item.kategori}</p>
+                    <p className={styles.harga}>
+                      Rp {item.harga.toLocaleString("id-ID")}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))
+          )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className={styles.cta}>
+        <h3>Butuh Bantuan atau Penawaran Khusus?</h3>
+        <a href="https://wa.me/6281234567890" target="_blank">
+          Konsultasi Sekarang
         </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        &copy; {new Date().getFullYear()} PT. BrandStore Indonesia. All rights reserved.
       </footer>
+
+      {/* Floating Chat Button */}
+      <FloatingChat />
     </div>
   );
 }

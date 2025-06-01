@@ -1,0 +1,44 @@
+// styles/SkeletonCard.module.scss
+.skeletonCard {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  animation: pulse 1.5s infinite;
+
+  div {
+    background: #e5e7eb;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .imagePlaceholder {
+    height: 10rem;
+    width: 100%;
+  }
+
+  .lineShort {
+    height: 0.75rem;
+    width: 50%;
+  }
+
+  .lineMedium {
+    height: 0.75rem;
+    width: 75%;
+  }
+
+  .lineLong {
+    height: 0.75rem;
+    width: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
