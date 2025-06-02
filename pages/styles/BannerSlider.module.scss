@@ -138,60 +138,108 @@
 // }
 
 
+//JANGAN DIHAPUS YAA IKII
+// .slider {
+//   padding: 1rem;
+//   background: #f8fafc;
+//   display: flex;
+//   justify-content: center;
+//   border-bottom: 1px solid #e5e7eb;
+
+//   .keen-slider {
+//     max-width: 1200px;
+//     width: 100%;
+//     aspect-ratio: 16/6;
+//     border-radius: 1rem;
+//     overflow: hidden;
+//     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+//   }
+
+//   .keen-slider__slide {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border: 5px solid red;
+
+
+//     img {
+//       width: 100%;
+//       height: auto;
+//       max-height: 320px;
+//       object-fit: cover;
+//       border: 5px solid red;
+
+//       border-radius: 0.75rem;
+//       transition: transform 0.3s ease;
+
+//       &:hover {
+//         transform: scale(1.01);
+//       }
+//     }
+//   }
+
+//   @media (max-width: 768px) {
+//     .keen-slider {
+//       aspect-ratio: 16/9;
+//     }
+
+//     .keen-slider__slide img {
+//       max-height: 200px;
+//       border-radius: 0.5rem;
+//     }
+//   }
+
+//   @media (min-width: 1440px) {
+//     .keen-slider {
+//       max-width: 1280px;
+//     }
+//   }
+// }
+
+
 
 .slider {
-  padding: 1rem;
-  background: #f8fafc;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+  max-height: 60vh;
+  overflow: hidden;
 
-  .keen-slider {
-    max-width: 1200px;
-    width: 100%;
-    aspect-ratio: 16/6;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  @media (max-width: 768px) {
+    max-height: 40vh;
   }
 
-  .keen-slider__slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid red;
+  @media (max-width: 480px) {
+    max-height: 30vh;
+  }
+}
 
+.sliderContainer {
+  position: relative;
+}
 
+.zoomTransition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  transform: scale(1);
+  opacity: 1;
+
+  &.keen-slider__slide {
     img {
       width: 100%;
       height: auto;
-      max-height: 320px;
       object-fit: cover;
-      border: 5px solid red;
-
-      border-radius: 0.75rem;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.01);
-      }
+      transition: transform 0.8s ease;
     }
   }
 
-  @media (max-width: 768px) {
-    .keen-slider {
-      aspect-ratio: 16/9;
-    }
-
-    .keen-slider__slide img {
-      max-height: 200px;
-      border-radius: 0.5rem;
-    }
+  &:not(.keen-slider__slide--active) img {
+    transform: scale(1.1);
+    opacity: 0.7;
   }
 
-  @media (min-width: 1440px) {
-    .keen-slider {
-      max-width: 1280px;
-    }
+  &.keen-slider__slide--active img {
+    transform: scale(1);
+    opacity: 1;
   }
 }
