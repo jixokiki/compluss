@@ -17,6 +17,7 @@
     "firebase": "^11.8.1",
     "framer-motion": "^12.15.0",
     "keen-slider": "^6.8.6",
+    "lucide-react": "^0.511.0",
     "multer": "^2.0.0",
     "mysql2": "^3.14.1",
     "next": "15.3.3",
