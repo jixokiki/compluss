@@ -1,7 +1,8 @@
 // pages/admin/login.js
 
 import { useEffect, useState } from "react"
-import { auth } from "@/lib/firebase"
+import { auth } from "../../lib/firebase"
+import styles from "./login.module.scss"
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth"
 import { useRouter } from "next/router"
 import Image from "next/image"
@@ -29,26 +30,46 @@ export default function LoginAdmin() {
     }
   }
 
+  // return (
+  //   <div className="min-h-screen flex items-center justify-center bg-gray-100">
+  //     <div className="bg-white p-8 rounded shadow-md w-full max-w-md text-center">
+  //       <h1 className="text-2xl font-bold mb-6">Login Admin</h1>
+
+  //       {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+
+  //       <button
+  //         onClick={handleGoogleLogin}
+  //         className="flex items-center justify-center gap-3 w-full border border-gray-300 py-3 px-4 rounded hover:shadow transition bg-white"
+  //       >
+  //         <Image
+  //           src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+  //           alt="Google Logo"
+  //           width={20}
+  //           height={20}
+  //         />
+  //         <span className="text-sm font-medium text-gray-700">Masuk dengan Google</span>
+  //       </button>
+  //     </div>
+  //   </div>
+  // )
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold mb-6">Login Admin</h1>
+  <div className={styles.loginContainer}>
+    <div className={styles.card}>
+      <h1>Login Admin</h1>
 
-        {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
-        <button
-          onClick={handleGoogleLogin}
-          className="flex items-center justify-center gap-3 w-full border border-gray-300 py-3 px-4 rounded hover:shadow transition bg-white"
-        >
-          <Image
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-            alt="Google Logo"
-            width={20}
-            height={20}
-          />
-          <span className="text-sm font-medium text-gray-700">Masuk dengan Google</span>
-        </button>
-      </div>
+      <button onClick={handleGoogleLogin} className={styles.googleButton}>
+        <Image
+          src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+          alt="Google Logo"
+          width={20}
+          height={20}
+        />
+        <span>Masuk dengan Google</span>
+      </button>
     </div>
-  )
+  </div>
+)
+
 }

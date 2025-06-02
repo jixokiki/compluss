@@ -860,7 +860,7 @@
 
 // ✅ Final Full Code (Card Style Layout) for Next.js
 import { useEffect, useState } from "react";
-import { db } from "@/lib/firebase";
+import { db } from "../../lib/firebase";
 import {
   collection,
   getDocs,
@@ -870,9 +870,10 @@ import {
 } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { showSuccessToast, showErrorToast, showInfoToast } from "@/lib/toast";
+import { showSuccessToast, showErrorToast, showInfoToast } from "../../lib/toast";
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from "framer-motion";
+import styles from "./manageProduk.module.scss";
 
 export default function ManageProduk() {
   const [produk, setProduk] = useState([]);
@@ -929,147 +930,373 @@ export default function ManageProduk() {
       return 0;
     });
 
-  return (
-    <motion.div
-      className="p-6 font-sans bg-gradient-to-b from-gray-50 to-white min-h-screen"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+  // return (
+  //   <motion.div
+  //     className="p-6 font-sans bg-gradient-to-b from-gray-50 to-white min-h-screen"
+  //     initial={{ opacity: 0, y: 20 }}
+  //     animate={{ opacity: 1, y: 0 }}
+  //     transition={{ duration: 0.5 }}
+  //   >
+  //     <ToastContainer position="top-right" autoClose={3000} />
+
+  //     <h1 className="text-4xl font-bold mb-6 text-gray-800">📦 Kelola Produk</h1>
+
+  //     {/* Filter */}
+  //     <div className="bg-white p-4 rounded-xl shadow mb-6 flex flex-wrap gap-3 items-center">
+  //       <input
+  //         type="text"
+  //         placeholder="🔍 Cari produk..."
+  //         value={search}
+  //         onChange={(e) => setSearch(e.target.value)}
+  //         className="border border-gray-300 px-4 py-2 rounded-md shadow-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-400"
+  //       />
+  //       <select
+  //         value={kategoriFilter}
+  //         onChange={(e) => setKategoriFilter(e.target.value)}
+  //         className="border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none"
+  //       >
+  //         <option value="">Semua Kategori</option>
+  //         {[...new Set(produk.map((p) => p.kategori))].map((kat) => (
+  //           <option key={kat} value={kat}>{kat}</option>
+  //         ))}
+  //       </select>
+  //       <select
+  //         value={sortKey}
+  //         onChange={(e) => setSortKey(e.target.value)}
+  //         className="border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none"
+  //       >
+  //         <option value="">Sortir</option>
+  //         <option value="stok">Stok Terbanyak</option>
+  //         <option value="harga">Harga Tertinggi</option>
+  //       </select>
+  //     </div>
+
+  //     {/* Produk Cards */}
+  //     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  //       {filteredProduk.map((item) => (
+  //         <motion.div
+  //           key={item.id}
+  //           className="bg-white rounded-xl shadow p-4 relative border hover:shadow-lg transition duration-300"
+  //           initial={{ opacity: 0, scale: 0.95 }}
+  //           animate={{ opacity: 1, scale: 1 }}
+  //           transition={{ duration: 0.3 }}
+  //         >
+  //           {editId === item.id ? (
+  //             <div>
+  //               <input
+  //                 type="text"
+  //                 value={editData.nama}
+  //                 onChange={(e) => setEditData({ ...editData, nama: e.target.value })}
+  //                 className="w-full mb-2 px-3 py-2 border rounded"
+  //               />
+  //               <input
+  //                 type="text"
+  //                 value={editData.kategori}
+  //                 onChange={(e) => setEditData({ ...editData, kategori: e.target.value })}
+  //                 className="w-full mb-2 px-3 py-2 border rounded"
+  //               />
+  //               <input
+  //                 type="number"
+  //                 value={editData.harga}
+  //                 onChange={(e) => setEditData({ ...editData, harga: +e.target.value })}
+  //                 className="w-full mb-2 px-3 py-2 border rounded"
+  //               />
+  //               <input
+  //                 type="number"
+  //                 value={editData.stok}
+  //                 onChange={(e) => setEditData({ ...editData, stok: +e.target.value })}
+  //                 className="w-full mb-2 px-3 py-2 border rounded"
+  //               />
+  //               <input
+  //                 type="text"
+  //                 value={editData.gambarUrl}
+  //                 onChange={(e) => setEditData({ ...editData, gambarUrl: e.target.value })}
+  //                 className="w-full mb-3 px-3 py-2 border rounded"
+  //               />
+  //               <div className="flex gap-2">
+  //                 <button onClick={handleEditSubmit} className="bg-green-500 text-white px-4 py-2 rounded">Simpan</button>
+  //                 <button onClick={handleCancelEdit} className="bg-gray-400 text-white px-4 py-2 rounded">Batal</button>
+  //               </div>
+  //             </div>
+  //           ) : (
+  //             <>
+  //               <img src={item.gambarUrl} alt={item.nama} className="h-40 w-full object-cover rounded mb-3" />
+  //               <h2 className="text-xl font-semibold">{item.nama}</h2>
+  //               <p className="text-sm text-gray-500">{item.kategori}</p>
+  //               <p className="mt-1 font-medium">Rp {item.harga.toLocaleString()}</p>
+  //               <p className="text-sm text-gray-600">Stok: {item.stok}</p>
+  //               <div className="absolute top-2 right-2 flex gap-2">
+  //                 <button
+  //                   onClick={() => handleEdit(item)}
+  //                   className="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 p-2 rounded-full"
+  //                 >
+  //                   <PencilSquareIcon className="w-5 h-5" />
+  //                 </button>
+  //                 <button
+  //                   onClick={() => setConfirmDeleteId(item.id)}
+  //                   className="bg-red-100 hover:bg-red-200 text-red-700 p-2 rounded-full"
+  //                 >
+  //                   <TrashIcon className="w-5 h-5" />
+  //                 </button>
+  //               </div>
+  //             </>
+  //           )}
+  //         </motion.div>
+  //       ))}
+  //     </div>
+
+  //     {/* Delete Confirmation Modal */}
+  //     <AnimatePresence>
+  //       {confirmDeleteId && (
+  //         <motion.div
+  //           className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+  //           initial={{ opacity: 0 }}
+  //           animate={{ opacity: 1 }}
+  //           exit={{ opacity: 0 }}
+  //         >
+  //           <motion.div
+  //             initial={{ y: -50, opacity: 0 }}
+  //             animate={{ y: 0, opacity: 1 }}
+  //             exit={{ y: -50, opacity: 0 }}
+  //             transition={{ duration: 0.3 }}
+  //             className="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-md"
+  //           >
+  //             <h2 className="text-lg font-semibold mb-4">Konfirmasi Hapus</h2>
+  //             <p className="text-sm text-gray-600 mb-6">Apakah kamu yakin ingin menghapus produk ini?</p>
+  //             <div className="flex justify-end space-x-3">
+  //               <button onClick={() => setConfirmDeleteId(null)} className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-sm font-medium">Batal</button>
+  //               <button onClick={confirmDelete} className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white text-sm font-medium">Ya, Hapus</button>
+  //             </div>
+  //           </motion.div>
+  //         </motion.div>
+  //       )}
+  //     </AnimatePresence>
+  //   </motion.div>
+  // );
+  // return (
+  //   <motion.div
+  //     className={styles.manageWrapper}
+  //     initial={{ opacity: 0, y: 20 }}
+  //     animate={{ opacity: 1, y: 0 }}
+  //     transition={{ duration: 0.5 }}
+  //   >
+  //     <ToastContainer position="top-right" autoClose={3000} />
+
+  //     <h1>📦 Kelola Produk</h1>
+
+  //     {/* Filter */}
+  //     <div className={styles.filterBar}>
+  //       <input
+  //         type="text"
+  //         placeholder="🔍 Cari produk..."
+  //         value={search}
+  //         onChange={(e) => setSearch(e.target.value)}
+  //       />
+  //       <select
+  //         value={kategoriFilter}
+  //         onChange={(e) => setKategoriFilter(e.target.value)}
+  //       >
+  //         <option value="">Semua Kategori</option>
+  //         {[...new Set(produk.map((p) => p.kategori))].map((kat) => (
+  //           <option key={kat} value={kat}>{kat}</option>
+  //         ))}
+  //       </select>
+  //       <select
+  //         value={sortKey}
+  //         onChange={(e) => setSortKey(e.target.value)}
+  //       >
+  //         <option value="">Sortir</option>
+  //         <option value="stok">Stok Terbanyak</option>
+  //         <option value="harga">Harga Tertinggi</option>
+  //       </select>
+  //     </div>
+
+  //     {/* Produk Cards */}
+  //     <div className={styles.productGrid}>
+  //       {filteredProduk.map((item) => (
+  //         <motion.div
+  //           key={item.id}
+  //           className={styles.productCard}
+  //           initial={{ opacity: 0, scale: 0.95 }}
+  //           animate={{ opacity: 1, scale: 1 }}
+  //           transition={{ duration: 0.3 }}
+  //         >
+  //           {editId === item.id ? (
+  //             <div className={styles.editForm}>
+  //               <input
+  //                 type="text"
+  //                 value={editData.nama}
+  //                 onChange={(e) => setEditData({ ...editData, nama: e.target.value })}
+  //               />
+  //               <input
+  //                 type="text"
+  //                 value={editData.kategori}
+  //                 onChange={(e) => setEditData({ ...editData, kategori: e.target.value })}
+  //               />
+  //               <input
+  //                 type="number"
+  //                 value={editData.harga}
+  //                 onChange={(e) => setEditData({ ...editData, harga: +e.target.value })}
+  //               />
+  //               <input
+  //                 type="number"
+  //                 value={editData.stok}
+  //                 onChange={(e) => setEditData({ ...editData, stok: +e.target.value })}
+  //               />
+  //               <input
+  //                 type="text"
+  //                 value={editData.gambarUrl}
+  //                 onChange={(e) => setEditData({ ...editData, gambarUrl: e.target.value })}
+  //               />
+  //               <div className={styles.formActions}>
+  //                 <button onClick={handleEditSubmit} className="save">Simpan</button>
+  //                 <button onClick={handleCancelEdit} className="cancel">Batal</button>
+  //               </div>
+  //             </div>
+  //           ) : (
+  //             <>
+  //               <img src={item.gambarUrl} alt={item.nama} />
+  //               <h2>{item.nama}</h2>
+  //               <p>{item.kategori}</p>
+  //               <p className={styles.harga}>Rp {item.harga.toLocaleString()}</p>
+  //               <p className={styles.stok}>Stok: {item.stok}</p>
+  //               <div className={styles.actionButtons}>
+  //                 <button onClick={() => handleEdit(item)} className="edit">
+  //                   <PencilSquareIcon className="w-5 h-5 icon" />
+  //                 </button>
+  //                 <button onClick={() => setConfirmDeleteId(item.id)} className="delete">
+  //                   <TrashIcon className="w-5 h-5 icon" />
+  //                 </button>
+  //               </div>
+  //             </>
+  //           )}
+  //         </motion.div>
+  //       ))}
+  //     </div>
+
+  //     {/* Delete Confirmation Modal */}
+  //     <AnimatePresence>
+  //       {confirmDeleteId && (
+  //         <motion.div
+  //           className={styles.modalBackdrop}
+  //           initial={{ opacity: 0 }}
+  //           animate={{ opacity: 1 }}
+  //           exit={{ opacity: 0 }}
+  //         >
+  //           <motion.div
+  //             className={styles.modalContent}
+  //             initial={{ y: -50, opacity: 0 }}
+  //             animate={{ y: 0, opacity: 1 }}
+  //             exit={{ y: -50, opacity: 0 }}
+  //             transition={{ duration: 0.3 }}
+  //           >
+  //             <h2>Konfirmasi Hapus</h2>
+  //             <p>Apakah kamu yakin ingin menghapus produk ini?</p>
+  //             <div className={styles.modalActions}>
+  //               <button onClick={() => setConfirmDeleteId(null)} className="cancel">Batal</button>
+  //               <button onClick={confirmDelete} className="confirm">Ya, Hapus</button>
+  //             </div>
+  //           </motion.div>
+  //         </motion.div>
+  //       )}
+  //     </AnimatePresence>
+  //   </motion.div>
+  // );
+  return(
+  <motion.div
+  className={styles.container}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  <ToastContainer position="top-right" autoClose={3000} />
+
+  <h1 className={styles.heading}>📦 Kelola Produk</h1>
+
+  {/* Filter */}
+  <div className={styles.filterBox}>
+    <input
+      type="text"
+      placeholder="🔍 Cari produk..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className={styles.input}
+    />
+    <select
+      value={kategoriFilter}
+      onChange={(e) => setKategoriFilter(e.target.value)}
+      className={styles.select}
     >
-      <ToastContainer position="top-right" autoClose={3000} />
+      <option value="">Semua Kategori</option>
+      {[...new Set(produk.map((p) => p.kategori))].map((kat) => (
+        <option key={kat} value={kat}>{kat}</option>
+      ))}
+    </select>
+    <select
+      value={sortKey}
+      onChange={(e) => setSortKey(e.target.value)}
+      className={styles.select}
+    >
+      <option value="">Sortir</option>
+      <option value="stok">Stok Terbanyak</option>
+      <option value="harga">Harga Tertinggi</option>
+    </select>
+  </div>
 
-      <h1 className="text-4xl font-bold mb-6 text-gray-800">📦 Kelola Produk</h1>
-
-      {/* Filter */}
-      <div className="bg-white p-4 rounded-xl shadow mb-6 flex flex-wrap gap-3 items-center">
-        <input
-          type="text"
-          placeholder="🔍 Cari produk..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border border-gray-300 px-4 py-2 rounded-md shadow-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        <select
-          value={kategoriFilter}
-          onChange={(e) => setKategoriFilter(e.target.value)}
-          className="border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none"
-        >
-          <option value="">Semua Kategori</option>
-          {[...new Set(produk.map((p) => p.kategori))].map((kat) => (
-            <option key={kat} value={kat}>{kat}</option>
-          ))}
-        </select>
-        <select
-          value={sortKey}
-          onChange={(e) => setSortKey(e.target.value)}
-          className="border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none"
-        >
-          <option value="">Sortir</option>
-          <option value="stok">Stok Terbanyak</option>
-          <option value="harga">Harga Tertinggi</option>
-        </select>
-      </div>
-
-      {/* Produk Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProduk.map((item) => (
-          <motion.div
-            key={item.id}
-            className="bg-white rounded-xl shadow p-4 relative border hover:shadow-lg transition duration-300"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            {editId === item.id ? (
-              <div>
-                <input
-                  type="text"
-                  value={editData.nama}
-                  onChange={(e) => setEditData({ ...editData, nama: e.target.value })}
-                  className="w-full mb-2 px-3 py-2 border rounded"
-                />
-                <input
-                  type="text"
-                  value={editData.kategori}
-                  onChange={(e) => setEditData({ ...editData, kategori: e.target.value })}
-                  className="w-full mb-2 px-3 py-2 border rounded"
-                />
-                <input
-                  type="number"
-                  value={editData.harga}
-                  onChange={(e) => setEditData({ ...editData, harga: +e.target.value })}
-                  className="w-full mb-2 px-3 py-2 border rounded"
-                />
-                <input
-                  type="number"
-                  value={editData.stok}
-                  onChange={(e) => setEditData({ ...editData, stok: +e.target.value })}
-                  className="w-full mb-2 px-3 py-2 border rounded"
-                />
-                <input
-                  type="text"
-                  value={editData.gambarUrl}
-                  onChange={(e) => setEditData({ ...editData, gambarUrl: e.target.value })}
-                  className="w-full mb-3 px-3 py-2 border rounded"
-                />
-                <div className="flex gap-2">
-                  <button onClick={handleEditSubmit} className="bg-green-500 text-white px-4 py-2 rounded">Simpan</button>
-                  <button onClick={handleCancelEdit} className="bg-gray-400 text-white px-4 py-2 rounded">Batal</button>
-                </div>
-              </div>
-            ) : (
-              <>
-                <img src={item.gambarUrl} alt={item.nama} className="h-40 w-full object-cover rounded mb-3" />
-                <h2 className="text-xl font-semibold">{item.nama}</h2>
-                <p className="text-sm text-gray-500">{item.kategori}</p>
-                <p className="mt-1 font-medium">Rp {item.harga.toLocaleString()}</p>
-                <p className="text-sm text-gray-600">Stok: {item.stok}</p>
-                <div className="absolute top-2 right-2 flex gap-2">
-                  <button
-                    onClick={() => handleEdit(item)}
-                    className="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 p-2 rounded-full"
-                  >
-                    <PencilSquareIcon className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => setConfirmDeleteId(item.id)}
-                    className="bg-red-100 hover:bg-red-200 text-red-700 p-2 rounded-full"
-                  >
-                    <TrashIcon className="w-5 h-5" />
-                  </button>
-                </div>
-              </>
-            )}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Delete Confirmation Modal */}
-      <AnimatePresence>
-        {confirmDeleteId && (
-          <motion.div
-            className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -50, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-md"
-            >
-              <h2 className="text-lg font-semibold mb-4">Konfirmasi Hapus</h2>
-              <p className="text-sm text-gray-600 mb-6">Apakah kamu yakin ingin menghapus produk ini?</p>
-              <div className="flex justify-end space-x-3">
-                <button onClick={() => setConfirmDeleteId(null)} className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-sm font-medium">Batal</button>
-                <button onClick={confirmDelete} className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white text-sm font-medium">Ya, Hapus</button>
-              </div>
-            </motion.div>
-          </motion.div>
+  {/* Produk Cards */}
+  <div className={styles.productGrid}>
+    {filteredProduk.map((item) => (
+      <motion.div
+        key={item.id}
+        className={styles.productCard}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        {editId === item.id ? (
+          <div className={styles.editForm}>
+            <input type="text" value={editData.nama} onChange={(e) => setEditData({ ...editData, nama: e.target.value })} />
+            <input type="text" value={editData.kategori} onChange={(e) => setEditData({ ...editData, kategori: e.target.value })} />
+            <input type="number" value={editData.harga} onChange={(e) => setEditData({ ...editData, harga: +e.target.value })} />
+            <input type="number" value={editData.stok} onChange={(e) => setEditData({ ...editData, stok: +e.target.value })} />
+            <input type="text" value={editData.gambarUrl} onChange={(e) => setEditData({ ...editData, gambarUrl: e.target.value })} />
+            <div className={styles.buttonGroup}>
+              <button onClick={handleEditSubmit} className={styles.btnSave}>Simpan</button>
+              <button onClick={handleCancelEdit} className={styles.btnCancel}>Batal</button>
+            </div>
+          </div>
+        ) : (
+          <>
+            <img src={item.gambarUrl} alt={item.nama} className={styles.productImage} />
+            <h2 className={styles.productTitle}>{item.nama}</h2>
+            <p className={styles.productCategory}>{item.kategori}</p>
+            <p className={styles.productPrice}>Rp {item.harga.toLocaleString()}</p>
+            <p className={styles.productStock}>Stok: {item.stok}</p>
+            <div className={styles.actionButtons}>
+              <button onClick={() => handleEdit(item)} className={styles.editBtn}><PencilSquareIcon className={styles.icon} /></button>
+              <button onClick={() => setConfirmDeleteId(item.id)} className={styles.deleteBtn}><TrashIcon className={styles.icon} /></button>
+            </div>
+          </>
         )}
-      </AnimatePresence>
-    </motion.div>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Modal Konfirmasi */}
+  <AnimatePresence>
+    {confirmDeleteId && (
+      <motion.div className={styles.modalOverlay} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <motion.div className={styles.modalBox} initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -50, opacity: 0 }} transition={{ duration: 0.3 }}>
+          <h2 className={styles.modalTitle}>Konfirmasi Hapus</h2>
+          <p className={styles.modalText}>Apakah kamu yakin ingin menghapus produk ini?</p>
+          <div className={styles.modalActions}>
+            <button onClick={() => setConfirmDeleteId(null)} className={styles.modalCancel}>Batal</button>
+            <button onClick={confirmDelete} className={styles.modalDelete}>Ya, Hapus</button>
+          </div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.div>
   );
 }

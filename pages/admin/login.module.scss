@@ -1,0 +1,54 @@
+// styles/login.module.scss
+
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6; // bg-gray-100
+
+  .card {
+    background-color: #ffffff; // bg-white
+    padding: 2rem; // p-8
+    border-radius: 0.5rem; // rounded
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // shadow-md
+    width: 100%;
+    max-width: 28rem; // max-w-md
+    text-align: center;
+
+    h1 {
+      font-size: 1.5rem; // text-2xl
+      font-weight: bold;
+      margin-bottom: 1.5rem; // mb-6
+    }
+
+    .error {
+      color: #dc2626; // text-red-600
+      font-size: 0.875rem; // text-sm
+      margin-bottom: 1rem; // mb-4
+    }
+
+    .googleButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem; // gap-3
+      width: 100%;
+      padding: 0.75rem 1rem; // py-3 px-4
+      border: 1px solid #d1d5db; // border-gray-300
+      border-radius: 0.375rem; // rounded
+      background-color: #ffffff;
+      transition: box-shadow 0.2s ease;
+
+      &:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); // hover:shadow
+      }
+
+      span {
+        font-size: 0.875rem; // text-sm
+        font-weight: 500;
+        color: #374151; // text-gray-700
+      }
+    }
+  }
+}

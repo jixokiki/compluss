@@ -136,9 +136,11 @@
 
 
 import { useState } from "react"
-import { db } from "@/lib/firebase"
+import { db } from "../../lib/firebase"
 import { collection, addDoc } from "firebase/firestore"
 import * as XLSX from "xlsx"
+import styles from "./UploadExcel.module.scss"
+
 
 export default function UploadExcel() {
   const [file, setFile] = useState(null)
@@ -228,62 +230,119 @@ export default function UploadExcel() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-3xl mx-auto bg-white p-6 rounded shadow">
-        <h1 className="text-xl font-bold mb-4">Upload Produk via Excel & Gambar</h1>
+    // <div className="min-h-screen bg-gray-100 p-8">
+    //   <div className="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+    //     <h1 className="text-xl font-bold mb-4">Upload Produk via Excel & Gambar</h1>
 
-        <div
-          onDrop={handleImageDrop}
-          onDragOver={(e) => e.preventDefault()}
-          className="mb-4 p-6 border-2 border-dashed border-blue-400 rounded text-center bg-blue-50"
-        >
-          <p className="text-sm text-gray-600">Drag & drop gambar produk di sini</p>
-        </div>
+    //     <div
+    //       onDrop={handleImageDrop}
+    //       onDragOver={(e) => e.preventDefault()}
+    //       className="mb-4 p-6 border-2 border-dashed border-blue-400 rounded text-center bg-blue-50"
+    //     >
+    //       <p className="text-sm text-gray-600">Drag & drop gambar produk di sini</p>
+    //     </div>
 
-        {uploadedImageUrls.length > 0 && (
-          <div className="mb-4">
-            <p className="text-sm font-semibold mb-2">Link Gambar Terupload:</p>
-            <ul className="text-sm text-blue-600 list-disc list-inside">
-              {uploadedImageUrls.map((url, idx) => (
-                <li key={idx} className="mb-1 flex items-center space-x-2">
-                  <span className="break-all">{url}</span>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(url)
-                      alert("✅ Link berhasil disalin!")
-                    }}
-                    className="text-xs text-white bg-green-500 px-2 py-0.5 rounded hover:bg-green-600"
-                  >
-                    Copy
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-gray-500 mt-2">
-              Gunakan link ini di kolom <strong>"GambarProduk"</strong> Excel,
-              atau gunakan angka urutan (0, 1, 2...) sesuai urutan gambar.
-            </p>
-          </div>
-        )}
+    //     {uploadedImageUrls.length > 0 && (
+    //       <div className="mb-4">
+    //         <p className="text-sm font-semibold mb-2">Link Gambar Terupload:</p>
+    //         <ul className="text-sm text-blue-600 list-disc list-inside">
+    //           {uploadedImageUrls.map((url, idx) => (
+    //             <li key={idx} className="mb-1 flex items-center space-x-2">
+    //               <span className="break-all">{url}</span>
+    //               <button
+    //                 onClick={() => {
+    //                   navigator.clipboard.writeText(url)
+    //                   alert("✅ Link berhasil disalin!")
+    //                 }}
+    //                 className="text-xs text-white bg-green-500 px-2 py-0.5 rounded hover:bg-green-600"
+    //               >
+    //                 Copy
+    //               </button>
+    //             </li>
+    //           ))}
+    //         </ul>
+    //         <p className="text-xs text-gray-500 mt-2">
+    //           Gunakan link ini di kolom <strong>"GambarProduk"</strong> Excel,
+    //           atau gunakan angka urutan (0, 1, 2...) sesuai urutan gambar.
+    //         </p>
+    //       </div>
+    //     )}
 
-        <input
-          type="file"
-          accept=".xlsx"
-          onChange={handleFileChange}
-          className="mb-4"
-        />
+    //     <input
+    //       type="file"
+    //       accept=".xlsx"
+    //       onChange={handleFileChange}
+    //       className="mb-4"
+    //     />
 
-        <button
-          onClick={handleUpload}
-          disabled={uploading}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          {uploading ? "Mengunggah..." : "Upload Excel"}
-        </button>
+    //     <button
+    //       onClick={handleUpload}
+    //       disabled={uploading}
+    //       className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    //     >
+    //       {uploading ? "Mengunggah..." : "Upload Excel"}
+    //     </button>
 
-        {message && <p className="mt-4 text-green-600">{message}</p>}
-      </div>
+    //     {message && <p className="mt-4 text-green-600">{message}</p>}
+    //   </div>
+    // </div>
+    <div className={styles.container}>
+  <div className={styles.card}>
+    <h1 className={styles.title}>Upload Produk via Excel & Gambar</h1>
+
+    <div
+      onDrop={handleImageDrop}
+      onDragOver={(e) => e.preventDefault()}
+      className={styles.dropzone}
+    >
+      <p className={styles.dropText}>Drag & drop gambar produk di sini</p>
     </div>
+
+    {uploadedImageUrls.length > 0 && (
+      <div className={styles.uploadedSection}>
+        <p className={styles.uploadedTitle}>Link Gambar Terupload:</p>
+        <ul className={styles.urlList}>
+          {uploadedImageUrls.map((url, idx) => (
+            <li key={idx} className={styles.urlItem}>
+              <span className={styles.urlText}>{url}</span>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(url)
+                  alert("✅ Link berhasil disalin!")
+                }}
+                className={styles.copyButton}
+              >
+                Copy
+              </button>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.hintText}>
+          Gunakan link ini di kolom <strong>"GambarProduk"</strong> Excel,
+          atau gunakan angka urutan (0, 1, 2...) sesuai urutan gambar.
+        </p>
+      </div>
+    )}
+
+    <input
+      type="file"
+      accept=".xlsx"
+      onChange={handleFileChange}
+      className={styles.fileInput}
+    />
+
+    <button
+      onClick={handleUpload}
+      disabled={uploading}
+      className={styles.uploadButton}
+    >
+      {uploading ? "Mengunggah..." : "Upload Excel"}
+    </button>
+
+    {message && <p className={styles.successMessage}>{message}</p>}
+  </div>
+</div>
+
   )
 }
 
