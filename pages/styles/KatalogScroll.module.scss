@@ -1,0 +1,70 @@
+/* styles/KatalogScroll.module.scss */
+
+.sectionKatalog {
+  background: #f9fafb;
+  padding: 4rem 1rem;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1f2937;
+}
+
+.scrollWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  scroll-behavior: smooth;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.katalogCard {
+  scroll-snap-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.4s ease;
+  max-width: 900px;
+  margin: 0 auto;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.imageWrapper {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.95);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}

@@ -213,6 +213,8 @@ import FloatingChat from "./components/FloatingChat";
 import BannerSlider from "./components/BannerSlider";
 import SkeletonCard from "./components/SkeletonCard";
 import CategoryFilter from "./components/CategoryFilter";
+import KatalogScroll from "./components/KatalogScroll";
+
 
 export default function LandingPage() {
   const [produk, setProduk] = useState([]);
@@ -257,7 +259,9 @@ export default function LandingPage() {
       {/* <section className={styles.heroCarousel}>
         <BannerSlider />
       </section> */}
-              <BannerSlider />
+      <BannerSlider />
+      <KatalogScroll />
+
 
       {/* Produk Section */}
       <section id="produk" className={styles.produkSection}>
