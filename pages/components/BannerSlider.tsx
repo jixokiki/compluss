@@ -218,6 +218,27 @@ export default function BannerSlider() {
         <div className={`keen-slider__slide ${styles.zoomTransition}`}>
           <img src="/banners/promo3.png" alt="Promo 3" />
         </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo4.png" alt="Promo 3" />
+        </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo5.png" alt="Promo 3" />
+        </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo6.png" alt="Promo 3" />
+        </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo7.png" alt="Promo 3" />
+        </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo8.png" alt="Promo 3" />
+        </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo9.png" alt="Promo 3" />
+        </div>
+                <div className={`keen-slider__slide ${styles.zoomTransition}`}>
+          <img src="/banners/promo10.png" alt="Promo 3" />
+        </div>
       </div>
     </div>
   );
