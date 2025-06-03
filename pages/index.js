@@ -214,6 +214,7 @@ import BannerSlider from "./components/BannerSlider";
 import SkeletonCard from "./components/SkeletonCard";
 import CategoryFilter from "./components/CategoryFilter";
 import KatalogScroll from "./components/KatalogScroll";
+import BannerInformative from "./components/BannerInformative";
 
 
 export default function LandingPage() {
@@ -263,7 +264,7 @@ export default function LandingPage() {
       <KatalogScroll />
 
 
-      {/* Produk Section
+      {/* Produk Section */}
       <section id="produk" className={styles.produkSection}>
         <h3>Produk Terbaru</h3>
         <div className="sticky top-16 bg-white z-40 shadow px-4 py-2">
@@ -274,92 +275,143 @@ export default function LandingPage() {
             Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
           ) : (
             produkTampil.map((item) => (
-              <motion.div
-                key={item.id}
-                whileHover={{ scale: 1.02 }}
-                className={styles.card}
-              >
-                <Link href={`/produk/${item.id}`}>
-                  <div className="relative">
-                    <img src={item.gambarUrl} alt={item.nama} />
-                    {item.diskon && (
-                      <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded">
-                        {item.diskon}% OFF
-                      </span>
-                    )}
-                    <button className="absolute bottom-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
-                      + Keranjang
-                    </button>
-                  </div>
-                  <div className={styles.info}>
-                    <h4>{item.nama}</h4>
-                    <p className={styles.kategori}>{item.kategori}</p>
-                    <p className={styles.harga}>
-                      Rp {item.harga.toLocaleString("id-ID")}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
+              // <motion.div
+              //   key={item.id}
+              //   whileHover={{ scale: 1.02 }}
+              //   className={styles.card}
+              // >
+              //   <Link href={`/produk/${item.id}`}>
+              //     <div className="relative">
+              //       <img src={item.gambarUrl} alt={item.nama} />
+              //       {item.diskon && (
+              //         <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded">
+              //           {item.diskon}% OFF
+              //         </span>
+              //       )}
+              //       <button className="absolute bottom-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+              //         + Keranjang
+              //       </button>
+              //     </div>
+              //     <div className={styles.info}>
+              //       <h4>{item.nama}</h4>
+              //       <p className={styles.kategori}>{item.kategori}</p>
+              //       <p className={styles.harga}>
+              //         Rp {item.harga.toLocaleString("id-ID")}
+              //       </p>
+              //     </div>
+              //   </Link>
+              // </motion.div>
+  //             <motion.div
+  //   key={item.id}
+  //   whileHover={{ scale: 1.02 }}
+  //   className={styles.card}
+  // >
+  //   <div className="relative">
+  //     <Link href={`/produk/${item.id}`}>
+  //       <img src={item.gambarUrl} alt={item.nama} />
+  //       {item.diskon && (
+  //         <span className={styles.badge}>{item.diskon}% OFF</span>
+  //       )}
+  //       <div className={styles.info}>
+  //         <h4>{item.nama}</h4>
+  //         <p className={styles.kategori}>{item.kategori}</p>
+  //         <p className={styles.harga}>Rp {item.harga.toLocaleString("id-ID")}</p>
+  //       </div>
+  //     </Link>
+
+  //     {/* ✅ Tombol berada di luar Link */}
+  //     <button
+  //       onClick={(e) => {
+  //         e.stopPropagation(); // hindari trigger link
+  //         e.preventDefault();  // hindari redirect
+  //         console.log("Tambah ke keranjang:", item.nama);
+  //         // tambahkan logika keranjang di sini
+  //       }}
+  //     >
+  //       + Keranjang
+  //     </button>
+  //   </div>
+  // </motion.div>
+//   <motion.div key={item.id} className={styles.card} whileHover={{ scale: 1.02 }}>
+//   {/* SET wrapper RELATIVE */}
+//   <div className="relative">
+//     <Link href={`/produk/${item.id}`}>
+//       <img src={item.gambarUrl} alt={item.nama} />
+//       {item.diskon >= 30 && <span className={styles.badge}>{item.diskon}% OFF</span>}
+//       <div className={styles.info}>
+//         <h4>{item.nama}</h4>
+//         <p className={styles.kategori}>{item.kategori}</p>
+//         <p className={styles.harga}>Rp {item.harga.toLocaleString("id-ID")}</p>
+//       </div>
+//     </Link>
+
+//     {/* ✅ Posisikan di dalam .relative wrapper */}
+//     <button
+//       onClick={(e) => {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         alert(`Tambah ke keranjang: ${item.nama}`);
+//       }}
+//     >
+//       + Keranjang
+//     </button>
+//   </div>
+// </motion.div>
+
+<motion.div
+  key={item.id}
+  className={styles.card}
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.5, ease: 'easeOut' }}
+  whileHover={{ scale: 1.03 }}
+>
+  <div className="relative">
+    <Link href={`/produk/${item.id}`}>
+      <img src={item.gambarUrl} alt={item.nama} />
+      {item.diskon >= 30 && <span className={styles.badge}>{item.diskon}% OFF</span>}
+      {item.diskon >= 30 && <span className={styles["label-flash"]}>🔥 Flash Sale</span>}
+      {item.kategori?.toLowerCase().includes("populer") && <span className={styles["label-best"]}>⭐ Best Seller</span>}
+
+      <div className={styles.info}>
+        <h4>{item.nama}</h4>
+        <p className={styles.kategori}>{item.kategori}</p>
+        <p className={styles.harga}>Rp {item.harga.toLocaleString("id-ID")}</p>
+      </div>
+    </Link>
+
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        alert(`Tambah ke keranjang: ${item.nama}`);
+
+        const cartEl = document.querySelector(`.${styles.floatingCart}`);
+        cartEl?.classList.add("clicked");
+        setTimeout(() => {
+          cartEl?.classList.remove("clicked");
+        }, 300);
+      }}
+    >
+      + Keranjang
+    </button>
+  </div>
+</motion.div>
+
             ))
+            
           )}
+          {/* Floating Cart Icon */}
+<div className={styles.floatingCart}>
+  🛒 Keranjang
+</div>
+
+
         </div>
-      </section> */}
+      </section>
 
-
-      <section id="produk" className={styles.produkSection}>
-  <h3>Produk Terbaru</h3>
-  <div className="sticky top-16 bg-white z-40 shadow px-4 py-2">
-    <CategoryFilter selected={selectedKategori} onSelect={setSelectedKategori} />
-  </div>
-  <div className={styles.grid}>
-    {loading ? (
-      Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
-    ) : (
-      produkTampil.map((item) => {
-        const isFlashSale = item.diskon >= 30;
-        const isBestSeller = item.kategori.toLowerCase().includes("populer");
-        return (
-          <motion.div
-            key={item.id}
-            className={styles.card}
-            whileHover={{ scale: 1.02 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href={`/produk/${item.id}`}>
-              <div className="relative">
-                <img src={item.gambarUrl} alt={item.nama} />
-                {item.diskon > 0 && (
-                  <span className={styles.badge}>{item.diskon}% OFF</span>
-                )}
-                {isFlashSale && (
-                  <span className={styles["label-flash"]}>🔥 Flash Sale</span>
-                )}
-                {isBestSeller && (
-                  <span className={styles["label-best"]}>⭐ Best Seller</span>
-                )}
-                <button>+ Keranjang</button>
-              </div>
-              <div className={styles.info}>
-                <h4>{item.nama}</h4>
-                <p className={styles.kategori}>{item.kategori}</p>
-                <p className={styles.harga}>Rp {item.harga.toLocaleString("id-ID")}</p>
-              </div>
-            </Link>
-          </motion.div>
-        );
-      })
-    )}
-  </div>
-
-  {/* 🛒 Floating Cart */}
-  <div className={styles.floatingCart}>
-    🛒 Keranjang
-  </div>
-</section>
-
+      <BannerInformative/>
 
       {/* CTA */}
       <section className={styles.cta}>
