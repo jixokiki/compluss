@@ -263,7 +263,7 @@ export default function LandingPage() {
       <KatalogScroll />
 
 
-      {/* Produk Section */}
+      {/* Produk Section
       <section id="produk" className={styles.produkSection}>
         <h3>Produk Terbaru</h3>
         <div className="sticky top-16 bg-white z-40 shadow px-4 py-2">
@@ -303,7 +303,63 @@ export default function LandingPage() {
             ))
           )}
         </div>
-      </section>
+      </section> */}
+
+
+      <section id="produk" className={styles.produkSection}>
+  <h3>Produk Terbaru</h3>
+  <div className="sticky top-16 bg-white z-40 shadow px-4 py-2">
+    <CategoryFilter selected={selectedKategori} onSelect={setSelectedKategori} />
+  </div>
+  <div className={styles.grid}>
+    {loading ? (
+      Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+    ) : (
+      produkTampil.map((item) => {
+        const isFlashSale = item.diskon >= 30;
+        const isBestSeller = item.kategori.toLowerCase().includes("populer");
+        return (
+          <motion.div
+            key={item.id}
+            className={styles.card}
+            whileHover={{ scale: 1.02 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href={`/produk/${item.id}`}>
+              <div className="relative">
+                <img src={item.gambarUrl} alt={item.nama} />
+                {item.diskon > 0 && (
+                  <span className={styles.badge}>{item.diskon}% OFF</span>
+                )}
+                {isFlashSale && (
+                  <span className={styles["label-flash"]}>🔥 Flash Sale</span>
+                )}
+                {isBestSeller && (
+                  <span className={styles["label-best"]}>⭐ Best Seller</span>
+                )}
+                <button>+ Keranjang</button>
+              </div>
+              <div className={styles.info}>
+                <h4>{item.nama}</h4>
+                <p className={styles.kategori}>{item.kategori}</p>
+                <p className={styles.harga}>Rp {item.harga.toLocaleString("id-ID")}</p>
+              </div>
+            </Link>
+          </motion.div>
+        );
+      })
+    )}
+  </div>
+
+  {/* 🛒 Floating Cart */}
+  <div className={styles.floatingCart}>
+    🛒 Keranjang
+  </div>
+</section>
+
 
       {/* CTA */}
       <section className={styles.cta}>
