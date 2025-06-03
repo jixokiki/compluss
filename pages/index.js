@@ -416,7 +416,7 @@ export default function LandingPage() {
       {/* CTA */}
       <section className={styles.cta}>
         <h3>Butuh Bantuan atau Penawaran Khusus?</h3>
-        <a href="https://wa.me/6281234567890" target="_blank">
+        <a href="https://wa.me/6285817298071" target="_blank">
           Konsultasi Sekarang
         </a>
       </section>
