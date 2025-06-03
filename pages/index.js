@@ -247,13 +247,138 @@ export default function LandingPage() {
           <Link href="/tentang">Tentang Kami</Link>
           <Link href="/kontak">Kontak</Link>
         </nav>
-        <a
+        {/* <a
           href="https://wa.me/6281234567890"
           target="_blank"
           className={styles.waBtn}
         >
           Chat WhatsApp
-        </a>
+        </a> */}
+                  {/* Floating Cart Icon */}
+{/* <div className={styles.floatingCart}>
+  🛒 
+</div> */}
+{/* <div
+  className={styles.floatingCart}
+  onClick={async () => {
+    const { db } = await import("../lib/firebase");
+    const { collection, getDocs } = await import("firebase/firestore");
+
+    const snapshot = await getDocs(collection(db, "keranjang"));
+    const items = snapshot.docs.map(doc => doc.data());
+    alert("Isi Keranjang:\n\n" + items.map((i, idx) => `${idx + 1}. ${i.nama} - Rp ${i.harga.toLocaleString("id-ID")}`).join("\n"));
+  }}
+>
+  🛒
+</div> */}
+{/* <div
+  className={styles.floatingCart}
+  onClick={async () => {
+    const { db } = await import("../lib/firebase");
+    const { collection, getDocs } = await import("firebase/firestore");
+
+    const snapshot = await getDocs(collection(db, "keranjang"));
+    const items = snapshot.docs.map(doc => doc.data());
+
+    const sidebar = document.createElement("div");
+    sidebar.className = styles.cartSidebar;
+    sidebar.innerHTML = `
+      <div class="${styles.cartHeader}">🛒 Keranjang Anda</div>
+      <ul class="${styles.cartList}">
+        ${items.map((i, idx) => `<li><img src="${i.gambarUrl}" alt="${i.nama}"/><div><strong>${i.nama}</strong><br/>Rp ${i.harga.toLocaleString("id-ID")}</div></li>`).join("")}
+      </ul>
+      <button class="${styles.closeCart}">Tutup</button>
+    `;
+    document.body.appendChild(sidebar);
+
+    document.querySelector(`.${styles.closeCart}`)?.addEventListener("click", () => {
+      sidebar.remove();
+    });
+  }}
+>
+  🛒
+</div> */}
+
+{/* <div
+  className={styles.keranjangBelanja}
+  onClick={async () => {
+    const { db } = await import("../lib/firebase");
+    const { collection, getDocs } = await import("firebase/firestore");
+
+    const snapshot = await getDocs(collection(db, "keranjang"));
+    const items = snapshot.docs.map(doc => doc.data());
+
+    const sidebar = document.createElement("div");
+    sidebar.className = styles.cartSidebar;
+    sidebar.innerHTML = `
+      <div class="${styles.cartHeader}">🛒 Keranjang Anda</div>
+      <ul class="${styles.cartList}">
+        ${items.map((i, idx) => `<li><img src="${i.gambarUrl}" alt="${i.nama}"/><div><strong>${i.nama}</strong><br/>Rp ${i.harga.toLocaleString("id-ID")}</div></li>`).join("")}
+      </ul>
+      <button class="${styles.closeCart}">Tutup</button>
+    `;
+    document.body.appendChild(sidebar);
+
+    // document.querySelector(`.${styles.closeCart}`)?.addEventListener("click", () => {
+    //   sidebar.remove();
+    // });
+    document.querySelector(`.${styles.closeCart}`)?.addEventListener("click", () => {
+  sidebar.style.animation = "slideDown 0.3s ease forwards";
+  setTimeout(() => {
+    sidebar.remove();
+  }, 300); // Waktu harus sama dengan durasi animasi
+});
+
+  }}
+>
+  🛒
+</div> */}
+
+
+
+<div
+  className={styles.keranjangBelanja}
+  onClick={async () => {
+    const { db } = await import("../lib/firebase");
+    const { collection, getDocs } = await import("firebase/firestore");
+
+    const snapshot = await getDocs(collection(db, "keranjang"));
+    const items = snapshot.docs.map(doc => doc.data());
+
+    const sidebar = document.createElement("div");
+    sidebar.className = styles.cartSidebar;
+    sidebar.innerHTML = `
+      <div class="${styles.cartHeader}">🛒 Keranjang Anda</div>
+      <ul class="${styles.cartList}">
+        ${items.map((i, idx) => `
+          <li>
+            <img src="${i.gambarUrl}" alt="${i.nama}"/>
+            <div>
+              <strong>${i.nama}</strong><br/>Rp ${i.harga.toLocaleString("id-ID")}
+            </div>
+          </li>
+        `).join("")}
+      </ul>
+      <button class="${styles.closeCart}">Tutup</button>
+    `;
+
+    document.body.appendChild(sidebar);
+
+    // Smooth slideDown on close
+    document.querySelector(`.${styles.closeCart}`)?.addEventListener("click", () => {
+      // sidebar.style.animation = "slideDown 0.4s cubic-bezier(0.77, 0, 0.175, 1) forwards";
+      // setTimeout(() => {
+      //   sidebar.remove();
+      // }, 400); // Match the animation duration
+      sidebar.classList.add(styles.slideDown);
+setTimeout(() => sidebar.remove(), 400);
+
+    });
+  }}
+>
+  🛒
+</div>
+
       </header>
 
       {/* Hero Carousel */}
@@ -358,6 +483,8 @@ export default function LandingPage() {
 //   </div>
 // </motion.div>
 
+
+//JANGAN DIHAPUS YA IKIII INI UDAH FIXXX BANGET YAA
 <motion.div
   key={item.id}
   className={styles.card}
@@ -382,10 +509,26 @@ export default function LandingPage() {
     </Link>
 
     <button
-      onClick={(e) => {
+      onClick={async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        alert(`Tambah ke keranjang: ${item.nama}`);
+
+        const message = `Halo Admin, saya ingin membeli:\n\nProduk: ${item.nama}\nKategori: ${item.kategori}\nHarga: Rp ${item.harga.toLocaleString("id-ID")}\nLink: https://yourwebsite.com/produk/${item.id}`;
+        const whatsappNumber = "6285817298071"; // Ganti dengan nomor WA Admin
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappLink, '_blank');
+
+        // Simpan ke Firebase
+        const { db } = await import("../lib/firebase");
+        const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+
+        await addDoc(collection(db, "keranjang"), {
+          nama: item.nama,
+          kategori: item.kategori,
+          harga: item.harga,
+          gambarUrl: item.gambarUrl,
+          timestamp: serverTimestamp(),
+        });
 
         const cartEl = document.querySelector(`.${styles.floatingCart}`);
         cartEl?.classList.add("clicked");
@@ -399,14 +542,10 @@ export default function LandingPage() {
   </div>
 </motion.div>
 
+
             ))
             
           )}
-          {/* Floating Cart Icon */}
-<div className={styles.floatingCart}>
-  🛒 Keranjang
-</div>
-
 
         </div>
       </section>

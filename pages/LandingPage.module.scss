@@ -709,6 +709,7 @@
     nav {
       display: none;
       gap: 1.5rem;
+      margin-right: 800px;
 
       @media (min-width: 768px) {
         display: flex;
@@ -1693,4 +1694,342 @@
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
+}
+
+
+
+
+
+
+
+
+
+// .keranjangBelanja {
+//   position: absolute;
+//   top: 1.25rem;
+//   right: 2rem;
+//   background: none;
+//   border: none;
+//   color: #2563eb;
+//   font-size: 1.5rem;
+//   cursor: pointer;
+//   z-index: 60;
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5rem;
+// }
+
+// .keranjangBelanja.clicked {
+//   transform: scale(1.1);
+// }
+
+// .cartSidebar {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   width: 320px;
+//   height: 100vh;
+//   background: white;
+//   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+//   padding: 1rem;
+//   z-index: 999;
+//   animation: slideIn 0.3s ease forwards;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// @keyframes slideIn {
+//   from {
+//     transform: translateX(100%);
+//   }
+//   to {
+//     transform: translateX(0);
+//   }
+// }
+
+// .cartHeader {
+//   font-size: 1.2rem;
+//   font-weight: bold;
+//   margin-bottom: 1rem;
+//   border-bottom: 1px solid #ddd;
+//   padding-bottom: 0.5rem;
+// }
+
+// .cartList {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+//   flex-grow: 1;
+//   overflow-y: auto;
+
+//   li {
+//     display: flex;
+//     align-items: center;
+//     gap: 0.75rem;
+//     padding: 0.5rem 0;
+//     border-bottom: 1px solid #eee;
+
+//     img {
+//       width: 40px;
+//       height: 40px;
+//       object-fit: cover;
+//       border-radius: 8px;
+//     }
+
+//     div {
+//       font-size: 0.9rem;
+//     }
+//   }
+// }
+
+// .closeCart {
+//   margin-top: 1rem;
+//   background: #ef4444;
+//   color: white;
+//   border: none;
+//   padding: 0.6rem;
+//   border-radius: 8px;
+//   cursor: pointer;
+//   font-weight: 600;
+//   z-index: 1000;
+//   position: relative;
+// }
+
+// @media (max-width: 768px) {
+//   .keranjangBelanja {
+//     top: 1rem;
+//     right: 1rem;
+//     font-size: 1.25rem;
+//     background: none;
+//     border: none;
+//     padding: 0.4rem;
+//   }
+
+//   .cartSidebar {
+//     width: 100%;
+//     height: 75vh;
+//     bottom: 0;
+//     top: auto;
+//     border-top-left-radius: 16px;
+//     border-top-right-radius: 16px;
+//     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+//     animation: slideUp 0.3s ease forwards;
+//   }
+
+//   .closeCart {
+//   margin-top: 1rem;
+//   background: #ef4444;
+//   color: white;
+//   border: none;
+//   padding: 0.6rem;
+//   border-radius: 8px;
+//   cursor: pointer;
+//   font-weight: 600;
+//   z-index: 1000;
+//   position: relative;
+// }
+
+//   @keyframes slideUp {
+//     from {
+//       transform: translateY(100%);
+//     }
+//     to {
+//       transform: translateY(0);
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+//NAH INI JANGAN DIHAPUS JUGA KI INI KERSNJANG BELANJANYA UDAH FIX 
+.keranjangBelanja {
+  position: absolute;
+  top: 1.25rem;
+  right: 3.5rem;
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.keranjangBelanja.clicked {
+  transform: scale(1.1);
+}
+
+.cartSidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  z-index: 999;
+  animation: slideIn 0.3s ease forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.cartSidebar.slideDown {
+  animation: slideDown 0.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.cartHeader {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.cartList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.cartList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cartList li img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cartList li div {
+  font-size: 0.9rem;
+}
+
+.closeCart {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 1000;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .keranjangBelanja {
+    top: 0.8rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    padding: 0.4rem;
+  }
+
+  .cartHeader {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-left: 30px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.cartList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 30px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+  .cartSidebar {
+    width: 100%;
+    height: 75vh;
+    bottom: 0;
+    top: auto;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease forwards;
+  }
+
+    .closeCart {
+  margin-top: 1rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  left: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 1000;
+  position: relative;
+}
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  .cartSidebar.slideDown {
+    animation: slideDown 0.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
 }
