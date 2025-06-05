@@ -215,6 +215,7 @@ import SkeletonCard from "./components/SkeletonCard";
 import CategoryFilter from "./components/CategoryFilter";
 import KatalogScroll from "./components/KatalogScroll";
 import BannerInformative from "./components/BannerInformative";
+import SmeetBooking from "./components/SmeetBooking";
 
 
 export default function LandingPage() {
@@ -555,7 +556,7 @@ setTimeout(() => sidebar.remove(), 400);
       {/* CTA */}
       <section className={styles.cta}>
         <h3>Butuh Bantuan atau Penawaran Khusus?</h3>
-        <a href="https://wa.me/6285817298071" target="_blank">
+        <SmeetBooking /><a href="https://wa.me/6285817298071" target="_blank">
           Konsultasi Sekarang
         </a>
       </section>
@@ -567,6 +568,7 @@ setTimeout(() => sidebar.remove(), 400);
 
       {/* Floating Chat Button */}
       <FloatingChat />
+      
     </div>
   );
 }
