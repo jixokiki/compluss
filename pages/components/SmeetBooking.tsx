@@ -739,7 +739,18 @@ export default function BookingWizard() {
     //     start: startDateTime.toISOString(),
     //     end: endDateTime.toISOString(),
     //   });
-      await fetch("../api/auth/[...nextauth].ts", {
+//       await fetch("../api/auth/[...nextauth].ts", {
+//   method: "POST",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify({
+//     summary: `Meeting dengan ${nama}`,
+//     description: keperluan,
+//     start: startDateTime.toISOString(),
+//     end: endDateTime.toISOString(),
+//   }),
+// });
+
+await fetch("/api/calendar", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
@@ -749,6 +760,7 @@ export default function BookingWizard() {
     end: endDateTime.toISOString(),
   }),
 });
+
 // await fetch("../api/google-calender/create.ts", {
 //   method: "POST",
 //   headers: { "Content-Type": "application/json" },
