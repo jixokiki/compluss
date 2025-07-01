@@ -10,7 +10,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import ProductDetailClient from "./ProductDetail";
 
-// ✅ Tambahkan metadata SEO per produk
+// ✅ Server-side metadata dynamic SEO per produk
 export async function generateMetadata({ params }) {
   const docRef = doc(db, "produk", params.id);
   const docSnap = await getDoc(docRef);
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
     `Dapatkan ${nama} hanya di Complus Sistem Solusi. Produk berkualitas dengan harga terbaik.`;
 
   const gambarUrl =
-    produk.gambarUrl || "https://www.compluscss.com/default-og.jpg";
+    produk.gambarUrl || "https://www.compluscss.com/logo4.png";
   const url = `https://www.compluscss.com/produk/${params.id}`;
 
   const jsonLd = {
@@ -61,13 +61,12 @@ export async function generateMetadata({ params }) {
       images: [gambarUrl],
     },
     other: {
-      // Inject structured data JSON-LD ke dalam <head>
       "script:ld+json": JSON.stringify(jsonLd),
     },
   };
 }
 
-// ✅ Komponen Server yang mem-fetch produk lalu render komponen Client
+// ✅ Komponen Server
 export default async function Page({ params }) {
   const docRef = doc(db, "produk", params.id);
   const docSnap = await getDoc(docRef);
@@ -75,8 +74,14 @@ export default async function Page({ params }) {
   if (!docSnap.exists()) return <div>Produk tidak ditemukan.</div>;
 
   const produk = { id: docSnap.id, ...docSnap.data() };
-  return <ProductDetailClient produk={produk} />;
+
+  return (
+    <div>
+      <ProductDetailClient produk={produk} />
+    </div>
+  );
 }
+
 
 
 // import { doc, getDoc } from "firebase/firestore";
