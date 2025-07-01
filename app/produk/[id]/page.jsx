@@ -65,23 +65,21 @@
 // }
 
 
-// app/produk/[id]/page.jsx
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../lib/firebase";
 import ProductDetailClient from "./ProductDetail";
 
 export async function generateMetadata({ params }) {
-  const docRef = doc(db, "produk", params.id);
-  const docSnap = await getDoc(docRef);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProduk/${params.id}`, {
+    cache: "no-store",
+  });
 
-  if (!docSnap.exists()) {
+  if (!res.ok) {
     return {
       title: "Produk tidak ditemukan",
       description: "Produk ini tidak tersedia di database kami.",
     };
   }
 
-  const produk = docSnap.data();
+  const produk = await res.json();
   return {
     title: produk.nama,
     description: produk.deskripsi || "Produk dari Compluss",
@@ -92,12 +90,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
-  const docRef = doc(db, "produk", params.id);
-  const docSnap = await getDoc(docRef);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProduk/${params.id}`, {
+    cache: "no-store",
+  });
 
-  if (!docSnap.exists()) return <div>Produk tidak ditemukan.</div>;
+  if (!res.ok) return <div>Produk tidak ditemukan.</div>;
 
-  const produk = { id: docSnap.id, ...docSnap.data() };
-
+  const produk = await res.json();
   return <ProductDetailClient produk={produk} />;
 }
