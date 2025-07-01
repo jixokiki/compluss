@@ -67,7 +67,7 @@
 
 // app/produk/[id]/page.jsx
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { db } from "../../../lib/firebase";
 import ProductDetailClient from "./ProductDetailClient";
 
 export async function generateMetadata({ params }) {
