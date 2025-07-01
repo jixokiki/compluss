@@ -99,12 +99,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./TentangKami.module.scss";
+import Head from "next/head";
+
 
 export default function TentangKami() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
+    <Head>
+  <title>Tentang Kami | PT. Complus Sistem Solusi</title>
+  <meta name="description" content="Kenali lebih dekat PT. Complus Sistem Solusi – perusahaan teknologi informasi terpercaya sejak 1999. Partner resmi ACER, ZYREX, Lenovo, dan lainnya." />
+
+  {/* OG Meta */}
+  <meta property="og:title" content="Tentang Kami | PT. Complus Sistem Solusi" />
+  <meta property="og:description" content="Partner TIK terpercaya di Indonesia sejak 1999. Dukungan untuk pendidikan, pemerintahan, dan sektor publik." />
+  <meta property="og:image" content="https://www.compluscss.com/logo4.png" />
+  <meta property="og:url" content="https://www.compluscss.com/TentangKami" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+</Head>
+
       <header className={styles.header}>
         {/* <div className={styles.logo}>
           <Link href="/">Compluss</Link>
