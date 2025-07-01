@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F7941D;
+  text-decoration: none;
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20px;
+  cursor: pointer;
+  z-index: 200;
+  transition: transform 0.3s ease-in-out;
+
+  .bar {
+    width: 26px;
+    height: 3px;
+    background-color: #111827;
+    border-radius: 2px;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+
+  &.open {
+    .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}
+
+.navMenu {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      color: #0ea5e9;
+      border-bottom: 1px solid #0ea5e9;
+    }
+  }
+
+  // Mobile view
+  @media (max-width: 768px) {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 1rem;
+    width: 220px;
+    padding: 1.2rem;
+    background: white;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+    z-index: 150;
+  }
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+}

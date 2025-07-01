@@ -245,11 +245,151 @@
 // }
 
 
+//JANGAN DIHAPUS KI INI COLOR YANG SEBELUMNYA YANG SEBELUM DIUBAH KE ORANGE
+// .sliderWrapper {
+//   position: relative;
+//   width: 100%;
+//   overflow: hidden;
+// }
+
+// .slider {
+//   max-height: 65vh;
+
+//   img {
+//     width: 100%;
+//     height: auto;
+//     object-fit: cover;
+//     transition: transform 0.8s ease, opacity 0.8s ease;
+//   }
+// }
+
+// .zoomSlide {
+//   position: relative;
+
+//   &:not(.keen-slider__slide--active) img {
+//     transform: scale(1.1);
+//     opacity: 0.7;
+//   }
+
+//   &.keen-slider__slide--active img {
+//     transform: scale(1);
+//     opacity: 1;
+//   }
+// }
+
+// .overlay {
+//   position: absolute;
+//   top: 20%;
+//   left: 10%;
+//   color: white;
+//   max-width: 40%;
+//   z-index: 10;
+
+//   h2 {
+//     font-size: 2rem;
+//     font-weight: 700;
+//     margin-bottom: 0.5rem;
+//   }
+
+//   p {
+//     font-size: 1rem;
+//     margin-bottom: 1rem;
+//   }
+
+//   a {
+//     display: inline-block;
+//     background: #2563eb;
+//     color: white;
+//     padding: 0.5rem 1rem;
+//     border-radius: 8px;
+//     text-decoration: none;
+//     font-weight: 600;
+//     transition: background 0.3s;
+
+//     &:hover {
+//       background: #1d4ed8;
+//     }
+//   }
+
+//   @media (max-width: 768px) {
+//     top: 10%;
+//     left: 5%;
+//     max-width: 80%;
+//     h2 {
+//       font-size: 1.5rem;
+//     }
+//     p {
+//       font-size: 0.875rem;
+//     }
+//   }
+// }
+
+// .prev,
+// .next {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   z-index: 20;
+//   background: rgba(0, 0, 0, 0.5);
+//   color: white;
+//   padding: 0.5rem;
+//   border: none;
+//   cursor: pointer;
+//   border-radius: 50%;
+
+//   &:hover {
+//     background: rgba(0, 0, 0, 0.7);
+//   }
+// }
+
+// .prev {
+//   left: 10px;
+// }
+
+// .next {
+//   right: 10px;
+// }
+
+// .dots {
+//   position: absolute;
+//   bottom: 1rem;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   display: flex;
+//   gap: 0.5rem;
+//   z-index: 10;
+
+//   button {
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 50%;
+//     border: none;
+//     background: rgba(255, 255, 255, 0.5);
+//     cursor: pointer;
+
+//     &.activeDot {
+//       background: white;
+//     }
+//   }
+// }
+
+// @keyframes fadeSlide {
+//   from {
+//     opacity: 0;
+//     transform: translateX(20px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }
+
 
 .sliderWrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
+  background-color: #FAF3E0; // krem lembut
 }
 
 .slider {
@@ -281,24 +421,29 @@
   position: absolute;
   top: 20%;
   left: 10%;
-  color: white;
-  max-width: 40%;
+  color: #1f2937; // teks gelap agar kontras di krem
+  background-color: rgba(250, 243, 224, 0.8); // lapisan krem semi transparan
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  max-width: 45%;
   z-index: 10;
 
   h2 {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    color: #F7941D;
   }
 
   p {
     font-size: 1rem;
     margin-bottom: 1rem;
+    color: #374151;
   }
 
   a {
     display: inline-block;
-    background: #2563eb;
+    background: #F7941D;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -307,7 +452,7 @@
     transition: background 0.3s;
 
     &:hover {
-      background: #1d4ed8;
+      background: #e67e00;
     }
   }
 
@@ -330,15 +475,16 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  background: rgba(0, 0, 0, 0.5);
+  background: #F7941D;
   color: white;
   padding: 0.5rem;
   border: none;
   cursor: pointer;
   border-radius: 50%;
+  transition: background 0.3s;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: #e67e00;
   }
 }
 
@@ -364,11 +510,10 @@
     height: 12px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
+    background: rgba(247, 148, 29, 0.4); // oranye lembut
 
     &.activeDot {
-      background: white;
+      background: #F7941D;
     }
   }
 }
