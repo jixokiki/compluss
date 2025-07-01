@@ -68,7 +68,7 @@
 // app/produk/[id]/page.jsx
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
-import ProductDetailClient from "./ProductDetailClient";
+import ProductDetailClient from "./ProductDetail";
 
 export async function generateMetadata({ params }) {
   const docRef = doc(db, "produk", params.id);
