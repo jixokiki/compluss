@@ -176,7 +176,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Link from "next/link";
 import styles from "./ProductDetailClient.module.scss";
 
-export default function ProductDetailClient({produk}) {
+export default function ProductDetailClient() {
   const { id } = useParams();
   const [produk, setProduk] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);

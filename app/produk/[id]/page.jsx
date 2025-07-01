@@ -1,87 +1,9 @@
-// "use client";
-// import ProductDetailClient from "./ProductDetail";
-
-// export default function Page() {
-//   return <ProductDetailClient />;
-// }
-
-
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../lib/firebase";
+"use client";
 import ProductDetailClient from "./ProductDetail";
 
-// ✅ Server-side metadata dynamic SEO per produk
-export async function generateMetadata({ params }) {
-  const docRef = doc(db, "produk", params.id);
-  const docSnap = await getDoc(docRef);
-
-  if (!docSnap.exists()) {
-    return {
-      title: "Produk tidak ditemukan - Complus Sistem Solusi",
-      description: "Produk ini tidak tersedia di katalog Complus.",
-    };
-  }
-
-  const produk = docSnap.data();
-  const nama = produk.nama || "Produk Complus";
-  const deskripsi =
-    produk.deskripsi ||
-    `Dapatkan ${nama} hanya di Complus Sistem Solusi. Produk berkualitas dengan harga terbaik.`;
-
-  const gambarUrl =
-    produk.gambarUrl || "https://www.compluscss.com/logo4.png";
-  const url = `https://www.compluscss.com/produk/${params.id}`;
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: nama,
-    image: gambarUrl,
-    description: deskripsi,
-    brand: {
-      "@type": "Brand",
-      name: "Complus Sistem Solusi",
-    },
-  };
-
-  return {
-    title: `${nama} - Harga & Info Produk | Complus`,
-    description: deskripsi,
-    openGraph: {
-      title: nama,
-      description: deskripsi,
-      url,
-      type: "product",
-      images: [gambarUrl],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: nama,
-      description: deskripsi,
-      images: [gambarUrl],
-    },
-    other: {
-      "script:ld+json": JSON.stringify(jsonLd),
-    },
-  };
+export default function Page() {
+  return <ProductDetailClient />;
 }
-
-// ✅ Komponen Server
-export default async function Page({ params }) {
-  const docRef = doc(db, "produk", params.id);
-  const docSnap = await getDoc(docRef);
-
-  if (!docSnap.exists()) return <div>Produk tidak ditemukan.</div>;
-
-  const produk = { id: docSnap.id, ...docSnap.data() };
-
-  return (
-    <div>
-      <ProductDetailClient produk={produk} />
-    </div>
-  );
-}
-
 
 
 // import { doc, getDoc } from "firebase/firestore";
