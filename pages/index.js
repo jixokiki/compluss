@@ -843,6 +843,7 @@ import CategoryFilter from "./components/CategoryFilter";
 import KatalogScroll from "./components/KatalogScroll";
 import BannerInformative from "./components/BannerInformative";
 // import SmeetBooking from "./components/SmeetBooking";
+  import Head from "next/head"; // tambahkan di atas kalau belum ada
 
 
 export default function LandingPage() {
@@ -864,6 +865,30 @@ export default function LandingPage() {
   const produkTampil = selectedKategori === "Semua"
     ? produk
     : produk.filter((item) => item.kategori === selectedKategori);
+
+  
+
+// di dalam return atau sebelum div utama
+<Head>
+  <title>PT. Complus Sistem Solusi | Solusi TIK Terintegrasi</title>
+  <meta
+    name="description"
+    content="Tingkatkan kualitas pendidikan dan operasional sekolah Anda dengan solusi perangkat TIK dari PT. Complus Sistem Solusi, partner resmi ACER, ZYREX, Lenovo, dan lainnya."
+  />
+  <meta
+    property="og:title"
+    content="PT. Complus Sistem Solusi | Solusi TIK Terintegrasi untuk Sekolah & Pemerintah"
+  />
+  <meta
+    property="og:description"
+    content="Upgrade sekolah Anda dengan perangkat digital terbaik dari partner resmi ACER, ZYREX, Lenovo, dan lainnya. Smart Classroom, Meubeler, hingga Sistem Keamanan."
+  />
+  <meta property="og:image" content="https://www.compluscss.com/logo4.png" />
+  <meta property="og:url" content="https://www.compluscss.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+</Head>
+
 
   return (
     <div className={styles.container}>
