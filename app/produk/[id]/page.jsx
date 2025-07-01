@@ -1,9 +1,9 @@
-// "use client";
-// import ProductDetailClient from "./ProductDetail";
+"use client";
+import ProductDetailClient from "./ProductDetail";
 
-// export default function Page() {
-//   return <ProductDetailClient />;
-// }
+export default function Page() {
+  return <ProductDetailClient />;
+}
 
 
 // import { doc, getDoc } from "firebase/firestore";
@@ -65,37 +65,37 @@
 // }
 
 
-import ProductDetailClient from "./ProductDetail";
+// import ProductDetailClient from "./ProductDetailClient";
 
-export async function generateMetadata({ params }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProduk/${params.id}`, {
-    cache: "no-store",
-  });
+// export async function generateMetadata({ params }) {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProduk/${params.id}`, {
+//     cache: "no-store",
+//   });
 
-  if (!res.ok) {
-    return {
-      title: "Produk Ini tidak ditemukan",
-      description: "Produk ini tidak tersedia di database kami.",
-    };
-  }
+//   if (!res.ok) {
+//     return {
+//       title: "Produk tidak ditemukan",
+//       description: "Produk ini tidak tersedia di database kami.",
+//     };
+//   }
 
-  const produk = await res.json();
-  return {
-    title: produk.nama,
-    description: produk.deskripsi || "Produk dari Compluss",
-    openGraph: {
-      images: [produk.gambarUrl],
-    },
-  };
-}
+//   const produk = await res.json();
+//   return {
+//     title: produk.nama,
+//     description: produk.deskripsi || "Produk dari Compluss",
+//     openGraph: {
+//       images: [produk.gambarUrl],
+//     },
+//   };
+// }
 
-export default async function Page({ params }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProduk/${params.id}`, {
-    cache: "no-store",
-  });
+// export default async function Page({ params }) {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProduk/${params.id}`, {
+//     cache: "no-store",
+//   });
 
-  if (!res.ok) return <div>Produk tidak ditemukan.</div>;
+//   if (!res.ok) return <div>Produk tidak ditemukan.</div>;
 
-  const produk = await res.json();
-  return <ProductDetailClient produk={produk} />;
-}
+//   const produk = await res.json();
+//   return <ProductDetailClient produk={produk} />;
+// }
