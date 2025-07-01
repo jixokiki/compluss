@@ -74,7 +74,7 @@ export async function generateMetadata({ params }) {
 
   if (!res.ok) {
     return {
-      title: "Produk tidak ditemukan",
+      title: "Produk Ini tidak ditemukan",
       description: "Produk ini tidak tersedia di database kami.",
     };
   }
