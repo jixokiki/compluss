@@ -7,7 +7,7 @@
 
 
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { db } from "../../../lib/firebase";
 import ProductDetailClient from "./ProductDetail";
 
 // ✅ Fungsi untuk generate <head> dinamis (dibaca WhatsApp/Facebook)
