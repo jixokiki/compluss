@@ -186,7 +186,7 @@ export default function TentangKami() {
             </p>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             className={styles.infoBox}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -214,7 +214,79 @@ export default function TentangKami() {
               <div className={styles.color} style={{ backgroundColor: "#CCCCCC" }} />
             </div>
             <p>Font: <strong>Montserrat Classic</strong> & <strong>Open Sans</strong></p>
-          </motion.div>
+          </motion.div> */}
+          <motion.div
+    className={styles.infoBox}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.9 }}
+  >
+    <h2>Profil Perusahaan</h2>
+    <p>
+      PT. Complus Sistem Solusi (CSS) adalah perusahaan teknologi informasi yang berdiri sejak tahun 1999 di Jakarta. Kami dipercaya dan didukung oleh berbagai distributor dan pabrikan terkemuka seperti MAGIC, ACER, ZYREX, LENOVO, HP, EPSON, SAMSUNG, DELL, SONY, Microsoft, dan Google.
+    </p>
+    <p>
+      Dengan komitmen terhadap profesionalisme, CSS telah meraih berbagai penghargaan bergengsi dan terus berkembang menjadi mitra terpercaya di bidang teknologi informasi di Indonesia.
+    </p>
+  </motion.div>
+
+  <motion.div
+    className={styles.infoBox}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1.0 }}
+  >
+    <h2>Misi & Strategi</h2>
+    <p>
+      Kami berkomitmen mendukung klien dengan solusi bisnis yang mampu meningkatkan performa dan profitabilitas melalui pemanfaatan teknologi terkini. Strategi kami menggabungkan pengetahuan mendalam, nilai kerja stabil, serta proses adaptasi teknologi berkelanjutan demi Indonesia menghadapi Revolusi Industri 4.0.
+    </p>
+  </motion.div>
+
+  <motion.div
+    className={styles.infoBox}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1.1 }}
+  >
+    <h2>Penghargaan</h2>
+    <ul>
+      <li>🏆 ACER Elite Partner – Outstanding Achievement 2024</li>
+      <li>🏆 Samsung Best Growth Partner – Smart Signage 2021</li>
+      <li>🏆 ACER Best Revenue – Server 2020</li>
+      <li>🏆 Samsung Best Contribution Partner – Government Sector</li>
+      <li>🏆 ACER Partner of The Year 2023</li>
+    </ul>
+  </motion.div>
+
+  <motion.div
+    className={styles.infoBox}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1.2 }}
+  >
+    <h2>Jangkauan Cabang</h2>
+    <p>
+      CSS memiliki kantor cabang di berbagai kota besar seperti Banda Aceh, Medan, Jambi, Bengkulu, Bandar Lampung, Surabaya, Pontianak, dan Makassar, serta terus memperluas jaringan di seluruh Indonesia.
+    </p>
+  </motion.div>
+
+  <motion.div
+    className={styles.infoBox}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1.3 }}
+  >
+    <h2>Project Pemerintah</h2>
+    <p>
+      Sejak 2021, CSS menjadi penyedia resmi peralatan elektronik di e-Katalog LKPP. Beberapa pencapaian:
+    </p>
+    <ul>
+      <li>📘 2019: Distribusi 70.000+ perangkat ke 12.000 sekolah</li>
+      <li>💻 2021: 1.875 laptop ke 125 SMP</li>
+      <li>🎓 2023 & 2024: Modernisasi teknologi di 100+ Perguruan Tinggi</li>
+      <li>📚 2022: 3.639 Chromebook untuk pendidikan khusus</li>
+    </ul>
+  </motion.div>
         </section>
       </main>
     </>
