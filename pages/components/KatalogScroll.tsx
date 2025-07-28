@@ -175,31 +175,37 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import styles from "../styles/KatalogScroll.module.scss";
 import Image from "next/image";
 import React, { useRef, useEffect } from "react";
+import { V } from "framer-motion/dist/types.d-CtuPurYT";
 
 const katalogList = [
   {
     id: 1,
-    gambar: "/katalog/magic-display.png",
+    // gambar: "/katalog/magic-display.png",
+    gambar: "/katalog/pm10.png",
     judul: "Magic Interactive Display",
   },
   {
     id: 2,
-    gambar: "/katalog/smart-classroom.png",
+    // gambar: "/katalog/smart-classroom.png",
+    gambar: "/katalog/pm7.png",
     judul: "Smart Classroom",
   },
   {
     id: 3,
-    gambar: "/katalog/security-system.png",
+    // gambar: "/katalog/security-system.png",
+    gambar: "/katalog/pm8.png",
     judul: "Integrated Security System",
   },
   {
     id: 4,
-    gambar: "/katalog/passenger-gate.png",
+    // gambar: "/katalog/passenger-gate.png",
+    gambar: "/katalog/pm11.png",
     judul: "Passenger Gate System",
   },
   {
     id: 5,
-    gambar: "/katalog/cctv-nvr.png",
+    // gambar: "/katalog/cctv-nvr.png",
+    gambar: "/katalog/pm5.png",
     judul: "CCTV & NVR System",
   },
 ];

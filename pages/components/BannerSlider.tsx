@@ -461,7 +461,8 @@ export default function BannerSlider() {
       <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
         {[
           {
-            src: "/banners/promo1.png",
+            // src: "/banners/promo1.png",
+                        src: "/banners/pm1.png",
             title: "Diskon Akhir Tahun",
             desc: "Dapatkan promo spesial hingga 50% untuk produk edukasi digital.",
             cta: "Lihat Produk",
@@ -485,13 +486,15 @@ export default function BannerSlider() {
             cta: "Safe & Convenient",
           },
           {
-            src: "/banners/promo5.png",
+            // src: "/banners/promo5.png",
+                        src: "/banners/bod1compluss.jpg",
             title: "Tampilan Visual Berkualitas",
             desc: "Solusi layar besar, proyektor & LED untuk kebutuhan presentasi.",
             cta: "Lihat Selengkapnya",
           },
           {
-            src: "/banners/promo6.png",
+            // src: "/banners/promo6.png",
+                        src: "/banners/bod2compluss.jpg",
             title: "Sistem Keamanan Terintegrasi",
             desc: "Turnstile, CCTV, dan akses kontrol dalam satu solusi.",
             cta: "Cek Detail",
