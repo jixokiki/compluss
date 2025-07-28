@@ -1,7 +1,7 @@
 "use client";
 import styles from "../styles/CategoryFilter.module.scss";
 
-const categories = ["Semua", "CCTV", "Panel", "Makanan", "Kesehatan", "Bayi"];
+const categories = ["Semua", "cpu", "laptop", "mini pc bundle", "all-in-one", "server"];
 
 export default function CategoryFilter({ selected, onSelect }) {
   return (
