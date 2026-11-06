@@ -389,7 +389,8 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #FAF3E0; // krem lembut
+  // background-color: #F3EBE3; // krem lembut
+    background-color: #0a2c45;
 }
 
 .slider {
@@ -432,18 +433,18 @@
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #F7941D;
-  }
+    color: #C2746C;
+    }
 
   p {
     font-size: 1rem;
     margin-bottom: 1rem;
-    color: #374151;
+    color: #0E2C44;
   }
 
   a {
     display: inline-block;
-    background: #F7941D;
+    background: #C2746C;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -452,7 +453,7 @@
     transition: background 0.3s;
 
     &:hover {
-      background: #e67e00;
+      background: #0E2C44;
     }
   }
 
@@ -475,7 +476,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  background: #F7941D;
+  background: #C2746C;
   color: white;
   padding: 0.5rem;
   border: none;
@@ -484,7 +485,7 @@
   transition: background 0.3s;
 
   &:hover {
-    background: #e67e00;
+    background: #BA2A24;
   }
 }
 
@@ -527,4 +528,9 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.ctaBtn {
+  background: #C2746C;
+  color: white;
 }

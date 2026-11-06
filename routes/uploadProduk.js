@@ -24,26 +24,26 @@
 
 
 
-// routes/uploadProduk.js
-const express = require("express")
-const db = require("../db")
-const router = express.Router()
+// // routes/uploadProduk.js
+// const express = require("express")
+// const db = require("../db")
+// const router = express.Router()
 
-router.post("/upload-produk", (req, res) => {
-  const { nama, kategori, harga, deskripsi, stok, gambar_url } = req.body
+// router.post("/upload-produk", (req, res) => {
+//   const { nama, kategori, harga, deskripsi, stok, gambar_url } = req.body
 
-  const sql = `
-    INSERT INTO produk (nama, kategori, harga, deskripsi, stok, gambar_url)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `
-  db.query(sql, [nama, kategori, harga, deskripsi, stok, gambar_url], (err, result) => {
-    if (err) {
-      console.error("❌ Gagal insert:", err)
-      return res.status(500).json({ error: "Database error" })
-    }
+//   const sql = `
+//     INSERT INTO produk (nama, kategori, harga, deskripsi, stok, gambar_url)
+//     VALUES (?, ?, ?, ?, ?, ?)
+//   `
+//   db.query(sql, [nama, kategori, harga, deskripsi, stok, gambar_url], (err, result) => {
+//     if (err) {
+//       console.error("❌ Gagal insert:", err)
+//       return res.status(500).json({ error: "Database error" })
+//     }
 
-    res.json({ success: true, insertedId: result.insertId })
-  })
-})
+//     res.json({ success: true, insertedId: result.insertId })
+//   })
+// })
 
-module.exports = router
+// module.exports = router

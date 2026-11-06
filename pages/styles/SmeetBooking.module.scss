@@ -48,93 +48,801 @@
 
 
 
-/* SCSS: BookingWizard.module.scss */
+// /* SCSS: BookingWizard.module.scss */
 
 
-.bookingWizard {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: white;
+// .bookingWizard {
+//   max-width: 500px;
+//   margin: 2rem auto;
+//   padding: 2rem;
+//   background: white;
+//   border-radius: 12px;
+//   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+
+//   h3 {
+//     margin-bottom: 1.5rem;
+//     font-size: 1.5rem;
+//     font-weight: 600;
+//     color: #222;
+//     text-align: center;
+//   }
+
+//   .stepBox {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 1rem;
+//   }
+
+//   input, textarea {
+//     padding: 0.75rem 1rem;
+//     border: 1px solid #ddd;
+//     border-radius: 8px;
+//     font-size: 1rem;
+//   }
+
+//   .gridSlot {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+//     gap: 0.5rem;
+
+//     button {
+//       padding: 0.5rem;
+//       background: #f0f0f0;
+//       border: 1px solid #ccc;
+//       border-radius: 6px;
+//       cursor: pointer;
+//       font-weight: 500;
+//       transition: 0.3s;
+//     }
+
+//     .active {
+//       background-color: #0E2C44;
+//       color: white;
+//       border-color: #0E2C44;
+//     }
+
+//     .disabled {
+//       background: #eee;
+//       color: #aaa;
+//       cursor: not-allowed;
+//     }
+//   }
+
+//   .navBtn {
+//     display: flex;
+//     justify-content: space-between;
+//     margin-top: 1rem;
+
+//     button {
+//       padding: 0.6rem 1.2rem;
+//       border-radius: 8px;
+//       background: #0E2C44;
+//       color: white;
+//       font-weight: 500;
+//       border: none;
+//       cursor: pointer;
+//       transition: background 0.3s;
+
+//       &:disabled {
+//         background: #ccc;
+//         cursor: not-allowed;
+//       }
+//     }
+//   }
+
+//   .success {
+//     margin-top: 1rem;
+//     color: green;
+//     font-weight: bold;
+//     text-align: center;
+//   }
+// }
+
+
+/* styles/SmeetBooking.module.scss
+   CSS Module for BookingWizard
+   Palette: --primary: #0d3a5b, --cream: #F3EBE3
+*/
+
+/* styles/SmeetBooking.module.scss
+   CSS Module for BookingWizard — uses CSS variables defined in globals.css
+*/
+//ini terbaru update september 2025
+// .bookingWizard {
+//   max-width: 760px;
+//   margin: 2rem auto;
+//   padding: 1.5rem;
+//     background: linear-gradient(180deg, white 0%, var(--card-bg) 100%);
+//     border-radius: 14px;
+//     box-shadow: var(--shadow);
+//     color: var(--primary);
+//     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+//   }
+
+// .bookingWizard h3 {
+//   margin: 0 0 1.25rem;
+//   font-size: 1.5rem;
+//   font-weight: 700;
+//     text-align: center;
+//   color: var(--primary);
+//   }
+
+//   .label {
+//     display: block;
+//     margin-bottom: 6px;
+//     color: var(--muted);
+//     font-size: 0.95rem;
+//   }
+
+//   .input,
+//   .select,
+//   .textarea {
+//     width: 100%;
+//     padding: 0.75rem 0.95rem;
+//     border: 1px solid rgba(13, 58, 91, 0.08);
+//     border-radius: 10px;
+//     font-size: 1rem;
+//     outline: none;
+//     transition: box-shadow .14s ease, border-color .14s ease;
+//     background: white;
+//   }
+
+//   .input:focus,
+//   .select:focus,
+//   .textarea:focus {
+//     box-shadow: 0 6px 18px rgba(13, 58, 91, 0.06);
+//     border-color: rgba(13, 58, 91, 0.18);
+//   }
+
+//   .textarea {
+//     min-height: 110px;
+//     resize: vertical;
+// }
+
+// .stepBox {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 12px;
+//     padding: 0.8rem;
+//     background: linear-gradient(180deg, rgba(13, 58, 91, 0.02), rgba(243, 235, 227, 0.4));
+//     border-radius: var(--radius);
+//     border: 1px solid rgba(13, 58, 91, 0.03);
+//   }
+
+// .gridSlot {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+//     gap: 10px;
+//   }
+
+// .slotButton {
+//   padding: 12px 10px;
+//   border-radius: 10px;
+//   background: white;
+//   border: 1px solid rgba(13, 58, 91, 0.06);
+//   cursor: pointer;
+//   font-weight: 600;
+//     color: var(--primary);
+//     text-align: center;
+//     transition: transform 0.12s ease, box-shadow .12s ease, background .12s ease;
+//     box-shadow: 0 6px 12px rgba(13, 58, 91, 0.02);
+//   }
+
+//   .slotButton:hover {
+//     transform: translateY(-3px);
+//     box-shadow: 0 10px 20px rgba(13, 58, 91, 0.06);
+//   }
+
+// .active {
+//   background: var(--primary);
+//     color: var(--cream);
+//     border-color: rgba(13, 58, 91, 0.18);
+//     box-shadow: 0 8px 26px rgba(13, 58, 91, 0.12);
+//   }
+
+// .disabled {
+//   background: #f3f4f6;
+//     color: #9aa6b0;
+//     border-color: rgba(13, 58, 91, 0.02);
+//     cursor: not-allowed;
+//   box-shadow: none;
+//   }
+
+// .navBtn {
+//   display: flex;
+//   justify-content: space-between;
+//   gap: 12px;
+//     margin-top: 0.5rem;
+//   }
+
+//   .navBtn button {
+//     padding: 10px 14px;
+//     border-radius: 10px;
+//     background: transparent;
+//     color: var(--primary);
+//     font-weight: 700;
+//     border: 1px solid rgba(13, 58, 91, 0.08);
+//     cursor: pointer;
+//     transition: background .12s ease, color .12s ease, transform .08s ease;
+//   }
+
+//   .navBtn button:hover {
+//     transform: translateY(-2px);
+//   }
+
+//   .navBtn button:disabled {
+//     opacity: 0.6;
+//     cursor: not-allowed;
+//     background: rgba(13, 58, 91, 0.02);
+//   }
+
+// .primaryBtn {
+//   background: var(--primary);
+//   color: var(--cream);
+//   border: none;
+//   padding: 12px 16px;
+//     border-radius: 10px;
+//   cursor: pointer;
+//   font-weight: 700;
+//   }
+
+// .success {
+//   margin-top: 1rem;
+//   color: #0a8b63;
+//     font-weight: 700;
+//     text-align: center;
+//   }
+
+//   .appointmentCard {
+//     background: white;
+//     border-radius: 12px;
+//     padding: 14px;
+//     display: grid;
+//     grid-template-columns: 80px 1fr;
+//     gap: 12px;
+//     align-items: center;
+//     border: 1px solid rgba(13, 58, 91, 0.04);
+//   }
+
+//   .appointmentDate {
+//     background: linear-gradient(180deg, rgba(13, 58, 91, 0.06), rgba(13, 58, 91, 0.03));
+//     color: var(--primary);
+//     border-radius: 10px;
+//     padding: 10px;
+//     text-align: center;
+//   font-weight: 700;
+// }
+// @media (max-width: 920px) {
+//   .bookingWizard {
+//     padding: 1rem;
+//   }
+
+//   .gridSlot {
+//     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+//   }
+// }
+
+// @media (max-width: 560px) {
+//   .bookingWizard {
+//     padding: 0.75rem;
+//     border-radius: 10px;
+//   }
+
+//   .gridSlot {
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 8px;
+//   }
+
+//   .slotButton {
+//     padding: 10px 8px;
+//     font-size: 0.95rem;
+//   }
+
+//   .navBtn {
+//     flex-direction: column-reverse;
+//     gap: 10px;
+//   }
+// }
+
+// /* ---------- Add visual widgets styles (calendar / timeline / chips) ---------- */
+
+// /* wrapper for the mini calendar + timeline (like image 1) */
+// .calendarTimeline {
+//   display: grid;
+//   grid-template-columns: 280px 1fr;
+//   gap: 16px;
+//   align-items: start;
+// }
+
+// /* MINI CALENDAR / date chips */
+// .miniCalendar {
+//   background: linear-gradient(180deg, #ffffff, var(--card-bg));
+//   border-radius: 12px;
+//   padding: 12px;
+//   border: 1px solid rgba(13,58,91,0.04);
+// }
+// .miniCalendar .month {
+//   font-weight: 700;
+//   color: var(--primary);
+//   margin-bottom: 8px;
+// }
+// .miniCalendar .weekdays {
+//   display: grid;
+//   grid-template-columns: repeat(7, 1fr);
+//   gap: 6px;
+//   color: var(--muted);
+//   font-size: 12px;
+//   margin-bottom: 8px;
+// }
+// .miniCalendar .dates {
+//   display: grid;
+//   grid-template-columns: repeat(7, 1fr);
+//   gap: 6px;
+// }
+// .dateChip {
+//   height: 34px;
+//   display: grid;
+//   place-items: center;
+//   border-radius: 8px;
+//   font-weight: 600;
+//   cursor: pointer;
+//   transition: transform .12s ease, background .12s ease;
+// }
+// .dateChip.today {
+//   background: var(--primary);
+//   color: var(--card-bg);
+//   box-shadow: 0 8px 18px rgba(13,58,91,0.12);
+// }
+// .dateChip:hover { transform: translateY(-4px); }
+
+// /* TIMELINE (simplified Gantt-like) */
+// .timelineWrap {
+//   background: linear-gradient(180deg, rgba(13,58,91,0.02), rgba(243,235,227,0.3));
+//   border-radius: 12px;
+//   padding: 12px;
+//   border: 1px solid rgba(13,58,91,0.03);
+// }
+// .timelineHeader {
+//   display: flex;
+//   gap: 6px;
+//   align-items: center;
+//   justify-content: space-between;
+//   margin-bottom: 12px;
+// }
+// .timelineGrid {
+//   display: grid;
+//   gap: 10px;
+// }
+// .timelineRow {
+//   display: grid;
+//   grid-template-columns: 140px 1fr;
+//   gap: 10px;
+//   align-items: center;
+// }
+// .personName {
+//   color: var(--muted);
+//   font-weight: 600;
+//   font-size: 14px;
+// }
+// .timelineBarArea {
+//   position: relative;
+//   height: 36px;
+//   background: rgba(13,58,91,0.03);
+//   border-radius: 8px;
+//   overflow: hidden;
+// }
+// /* bar relative position (use inline style width/left in JSX) */
+// .timelineBar {
+//   position: absolute;
+//   height: 22px;
+//   top: 7px;
+//   border-radius: 8px;
+//   background: linear-gradient(90deg, rgba(13,58,91,0.9), rgba(13,58,91,0.6));
+//   box-shadow: 0 8px 20px rgba(13,58,91,0.12);
+// }
+// /* vertical current-time indicator */
+// .currentIndicator {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   width: 2px;
+//   background: rgba(255,80,80,0.95);
+//   box-shadow: 0 0 6px rgba(255,80,80,0.25);
+// }
+
+// /* ---------- Add chips + available times styling for Step 2 (image 2) ---------- */
+
+// .dateChips {
+//   display: flex;
+//   gap: 10px;
+//   overflow-x: auto;
+//   padding-bottom: 8px;
+//   margin-bottom: 10px;
+// }
+// .dateChips .chip {
+//   min-width: 62px;
+//   padding: 8px 12px;
+//   border-radius: 10px;
+//   background: white;
+//   border: 1px solid rgba(13,58,91,0.06);
+//   text-align: center;
+//   cursor: pointer;
+//   font-weight: 700;
+// }
+// .dateChips .chip.active {
+//   background: var(--primary);
+//   color: var(--card-bg);
+//   box-shadow: 0 6px 18px rgba(13,58,91,0.12);
+// }
+
+// /* available times style is similar to slotButton but a bit different */
+// .availableTimes {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+//   gap: 12px;
+//   margin-top: 6px;
+// }
+// .timeBox {
+//   padding: 12px;
+//   border-radius: 10px;
+//   background: white;
+//   border: 1px solid rgba(13,58,91,0.06);
+//   text-align: center;
+//   font-weight: 700;
+//   cursor: pointer;
+// }
+// .timeBox.selected {
+//   background: #d94b3a; /* accent red-ish like reference; but we will keep primary for consistency */
+//   background: var(--primary);
+//   color: var(--card-bg);
+// }
+
+// /* appointment card style (used in "My Appointments" view) */
+// .appCard {
+//   background: white;
+//   border-radius: 12px;
+//   padding: 12px;
+//   display: grid;
+//   grid-template-columns: 64px 1fr;
+//   gap: 12px;
+//   border: 1px solid rgba(13,58,91,0.04);
+// }
+
+// /* small responsive tweaks */
+// @media (max-width: 860px) {
+//   .calendarTimeline { grid-template-columns: 1fr; }
+//   .timelineRow { grid-template-columns: 1fr; }
+//   .personName { display: none; }
+// }
+
+
+/* styles/SmeetBooking.module.scss
+   Booking wizard + mini-calendar + timeline styles
+   Uses CSS variables defined in your global CSS:
+   --primary, --card-bg, --muted, --shadow, --radius
+*/
+
+/* wrapper for whole booking area */
+.bookingWrap {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 16px;
+}
+
+/* main grid: timeline/ calendar / form arranged horizontally */
+.calendarTimeline {
+  display: grid;
+  grid-template-columns: 260px 1fr 420px;
+  /* calendar | timeline | form */
+  gap: 18px;
+  align-items: start;
+}
+
+/* ---------- MINI CALENDAR (chips) ---------- */
+.miniCalendar {
+  background: linear-gradient(180deg, #fff 0%, var(--card-bg) 100%);
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  border: 1px solid rgba(13, 58, 91, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  h3 {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #222;
-    text-align: center;
+.monthRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.monthTitle {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.dateChips {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid rgba(13, 58, 91, 0.06);
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
-
-  .stepBox {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  
+  .chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(13, 58, 91, 0.06);
   }
-
-  input, textarea {
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
+  
+  .chipActive,
+  .chipActive:hover {
+    background: var(--primary);
+    color: var(--card-bg);
+    box-shadow: 0 10px 26px rgba(13, 58, 91, 0.12);
   }
-
-  .gridSlot {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 0.5rem;
-
-    button {
-      padding: 0.5rem;
-      background: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .active {
-      background-color: #0070f3;
-      color: white;
-      border-color: #0070f3;
-    }
-
-    .disabled {
-      background: #eee;
-      color: #aaa;
-      cursor: not-allowed;
-    }
+  
+  .chipDay {
+    font-size: 11px;
+    color: var(--muted);
   }
-
-  .navBtn {
+  
+  .chipDate {
+    font-weight: 800;
+    font-size: 18px;
+  }
+  
+  /* small footer text */
+  .miniCalendarFooter {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  
+  /* ---------- TIMELINE ---------- */
+  .timelineWrap {
+    background: linear-gradient(180deg, rgba(13, 58, 91, 0.02), rgba(243, 235, 227, 0.3));
+  border-radius: 12px;
+  padding: 12px;
+    border: 1px solid rgba(13, 58, 91, 0.03);
+    min-height: 220px;
+  }
+  
+  .timelineHeader {
     display: flex;
     justify-content: space-between;
-    margin-top: 1rem;
-
-    button {
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      background: #0070f3;
-      color: white;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-
-      &:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-      }
-    }
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .timelineGrid {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .timelineRow {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .personName {
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  
+  .timelineBarArea {
+    position: relative;
+    height: 44px;
+    background: rgba(13, 58, 91, 0.03);
+    border-radius: 8px;
+    overflow: visible;
+  }
+  
+  .timelineBar {
+    position: absolute;
+    height: 28px;
+    top: 8px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(13, 58, 91, 0.95), rgba(13, 58, 91, 0.6));
+    box-shadow: 0 8px 20px rgba(13, 58, 91, 0.12);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* small time label on top of bar (positioned relative) */
+  .timelineTimeLabel {
+    position: absolute;
+    top: -18px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
   }
 
-  .success {
-    margin-top: 1rem;
-    color: green;
-    font-weight: bold;
+/* "no events" message */
+.noEventsMsg {
+  padding: 16px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* ---------- FORM (original wizard) ---------- */
+.formWrap {
+  /* the form column */
+}
+
+.bookingWizard {
+  max-width: 100%;
+  padding: 0;
+}
+
+.bookingWizard h3 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--primary);
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(13, 58, 91, 0.08);
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.14s ease, border-color 0.14s ease;
+  background: white;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  box-shadow: 0 6px 18px rgba(13, 58, 91, 0.06);
+  border-color: rgba(13, 58, 91, 0.18);
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.stepBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+    padding: 12px;
+    background: linear-gradient(180deg, rgba(13, 58, 91, 0.02), rgba(243, 235, 227, 0.4));
+    border-radius: var(--radius);
+    border: 1px solid rgba(13, 58, 91, 0.03);
+  }
+.gridSlot {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+  }
+  
+  .slotButton {
+    padding: 12px 10px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid rgba(13, 58, 91, 0.06);
+    cursor: pointer;
+  font-weight: 600;
+    color: var(--primary);
     text-align: center;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    box-shadow: 0 6px 12px rgba(13, 58, 91, 0.02);
+  }
+.slotButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(13, 58, 91, 0.06);
+}
+
+.active {
+  background: var(--primary);
+    color: var(--card-bg);
+    border-color: rgba(13, 58, 91, 0.18);
+    box-shadow: 0 8px 26px rgba(13, 58, 91, 0.12);
+  }
+.disabled {
+  background: #f3f4f6;
+    color: #9aa6b0;
+    border-color: rgba(13, 58, 91, 0.02);
+    cursor: not-allowed;
+  box-shadow: none;
+}
+.navBtn {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+    margin-top: 0.5rem;
+  }
+  
+  .navBtn button {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--primary);
+    font-weight: 700;
+    border: 1px solid rgba(13, 58, 91, 0.08);
+    cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
+  }
+  
+  .navBtn button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .navBtn button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  background: rgba(13, 58, 91, 0.02);
+}
+.primaryBtn {
+  background: var(--primary);
+  color: var(--card-bg);
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.success {
+  margin-top: 1rem;
+  color: #0a8b63;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* responsive: stack columns on small screens */
+@media (max-width: 1100px) {
+  .calendarTimeline {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineRow {
+    grid-template-columns: 1fr;
+  }
+
+  .personName {
+    display: none;
   }
 }
 
+@media (max-width: 560px) {
+  .gridSlot {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 8px;
+  }
+}

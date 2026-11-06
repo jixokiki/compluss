@@ -17,6 +17,7 @@ export default function App({ Component, pageProps }) {
   return (
     <SessionProvider session={pageProps.session}>
       <Component {...pageProps} />
+      {/* <Toaster position="bottom-right" reverseOrder={false} /> */}
     </SessionProvider>
   );
 }

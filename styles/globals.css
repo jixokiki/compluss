@@ -26,11 +26,142 @@ body {
 } */
 
 
-@import "tailwindcss/base";
+/* @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
+*/ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap'); */
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"); */
+
+:root {
+  --wmk-cream: #fffaf6;
+  --wmk-cream-2: #fff7f0;
+  --wmk-red: #ef4444;
+  --wmk-red-700: #dc2626;
+  --wmk-navy: #0d3a5b;
+  --wmk-navy-700: #09324a;
+  --soft-red-bg: #fff2f1;
+  --card-bg: #fff;
+  --card-border: #e6eef6;
+  --primary: #0f2a3d;
+  --muted: #6b7280;
+}
+
+:root {
+  --wmk-cream: #F3EBE3;
+  --wmk-cream-2: #F3EBE3;
+  --wmk-navy: #0F2A3D;
+  --wmk-navy-3: #0d3a5b;
+  --wmk-navy-700: #0B2230;
+  --wmk-red: #C7322B;
+  --wmk-red-700: #A82723;
+  --ink-70: #22313F;
+  --muted: #6b7280;
+  --card-border: #C2746C;
+  --soft-red-bg: #FFE3DE;
+}
+
+:root {
+  /* primary palette */
+  --primary: #0d3a5b;
+  /* navy deep */
+  --cream: #F3EBE3;
+  /* warm cream */
+  --muted: #7b8a97;
+
+  /* UI tokens */
+  --card-bg: #ffffff;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow: 0 8px 24px rgba(13, 58, 91, 0.08);
+  --glow: 0 12px 40px rgba(13, 58, 91, 0.12);
+
+  /* helpers */
+  --ink-100: #0d3a5b;
+  --ink-70: #213645;
+  --soft-red-bg: #FFE3DE;
+}
+
+
+/* styles/globals.css (tambahkan atau gabungkan ke file globals kamu) */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@300;400;600&display=swap'); */
+
+:root {
+  --primary: #0d3a5b;
+  --card-bg: #F3EBE3;
+  --cream: #F3EBE3;
+  --muted: #7b8a97;
+  --shadow: 0 8px 20px rgba(13, 58, 91, 0.08);
+  --radius: 12px;
+}
+
+/* minimal reset (if needed) */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--primary);
+  background: #fff;
+}
+
+
+/* styles/globals.css */
+/* Global variables, resets, fonts, keyframes */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap'); */
+
+:root {
+  --primary: #0d3a5b;
+  --accent: #F3EBE3;
+  --muted: #6b7a85;
+  --card-bg: #F3EBE3;
+  --shadow: 0 10px 30px rgba(13, 58, 91, 0.08);
+  --radius: 14px;
+}
+
+/* Basic reset */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--primary);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfaf9 100%);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* global keyframes */
+@keyframes pop {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+}
 
 
 

@@ -1,14 +1,15 @@
 // styles/SkeletonCard.module.scss
 .skeletonCard {
-  background: white;
+  // background: white;
+  background: #0d3a5b;
   padding: 1rem;
   border-radius: 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #0E2C44;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   animation: pulse 1.5s infinite;
 
   div {
-    background: #e5e7eb;
+    background: #0E2C44;
     border-radius: 0.5rem;
     margin-bottom: 0.75rem;
   }

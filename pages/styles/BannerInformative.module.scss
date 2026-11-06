@@ -444,7 +444,8 @@
   position: relative;
   overflow: hidden;
   padding: 2rem 0;
-  background: #FAF3E0; // krem lembut
+  // background: #F3EBE3; // krem lembut
+    background: #0d3a5b;
 }
 
 .slider {
@@ -490,7 +491,7 @@
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #F7941D;
+    color: #BA2A24;
   }
 
   p {
@@ -501,7 +502,7 @@
 
   a {
     display: inline-block;
-    background: #F7941D;
+    background: #BA2A24;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -510,7 +511,7 @@
     transition: background 0.3s ease;
 
     &:hover {
-      background: #e67e00;
+      background: #C2746C;
     }
   }
 }
@@ -521,7 +522,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  background: #F7941D;
+  background: #C2746C;
   color: white;
   padding: 0.5rem;
   border-radius: 50%;
@@ -530,7 +531,7 @@
   transition: background 0.3s ease;
 
   &:hover {
-    background: #e67e00;
+    background: #BA2A24;
   }
 }
 
@@ -556,7 +557,7 @@
     cursor: pointer;
 
     &.activeDot {
-      background: #F7941D;
+      background: #F3EBE3;
     }
   }
 }

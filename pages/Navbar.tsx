@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/">Compluss</Link>
+        <Link href="/">WMK</Link>
       </div>
 
       <div className={styles.rightControls}>
@@ -34,7 +34,7 @@ export default function Navbar() {
 
       <nav className={`${styles.navMenu} ${menuOpen ? styles.active : ""}`}>
         <Link href="/">Beranda</Link>
-        <Link href="/#produk">Produk</Link>
+        <Link href="/ProdukPage">Produk</Link>
         <Link href="/tentang">Tentang Kami</Link>
         <Link href="/bookingnavbar">Booking</Link>
         <Link href="/kontak">Kontak</Link>

@@ -33,27 +33,30 @@
   padding: 0.5rem 1rem;
   gap: 0.75rem;
   white-space: nowrap;
-  background: #FAF3E0; // krem lembut agar menonjol
+  background: #F3EBE3; // krem lembut agar menonjol
+    // background: #0a2c45;
 
   button {
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     font-weight: 500;
-    border: 1px solid #F7941D; // warna brand
-    background: white;
-    color: #374151;
+    border: 1px solid #BA2A24; // warna brand
+      // background: white;
+      background: #0a2c45;
+      // color: #374151;
+      color: white;
     transition: all 0.25s ease;
 
     &.active {
-      background: #F7941D;
+      background: #0E2C44;
       color: white;
       box-shadow: 0 2px 6px rgba(247, 148, 29, 0.35);
     }
 
     &:hover:not(.active) {
       background: #fff3e0; // krem hover yang sangat soft
-      color: #F7941D;
-      border-color: #f7941d;
+      color: #0E2C44;
+        border-color: #C2746C;
     }
   }
 }

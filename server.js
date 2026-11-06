@@ -78,37 +78,37 @@
 // })
 
 
+//jangan dhapus
+// const express = require("express");
+// const cors = require("cors");
+// const path = require("path");
 
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+// const uploadImageRoutes = require("./routes/uploadImage");
+// const uploadProdukRoutes = require("./routes/uploadProduk");
 
-const uploadImageRoutes = require("./routes/uploadImage");
-const uploadProdukRoutes = require("./routes/uploadProduk");
+// const app = express();
 
-const app = express();
+// // ✅ Gunakan CORS secara global dan fleksibel
+// app.use(cors({
+//   origin: "http://localhost:3000",
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   allowedHeaders: ["Content-Type"]
+// }));
 
-// ✅ Gunakan CORS secara global dan fleksibel
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"]
-}));
-
-// ✅ Middleware
-app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Server aktif dan menerima koneksi" });
-});
+// // ✅ Middleware
+// app.use(express.json());
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.get("/", (req, res) => {
+//   res.status(200).json({ message: "Server aktif dan menerima koneksi" });
+// });
 
 
-// ✅ Routes
-app.use("/api", uploadImageRoutes);
-app.use("/api", uploadProdukRoutes);
+// // ✅ Routes
+// app.use("/api", uploadImageRoutes);
+// app.use("/api", uploadProdukRoutes);
 
-// ✅ Start server
-const PORT = 5050;
-app.listen(PORT, () => {
-  console.log(`🚀 Server berjalan di http://localhost:${PORT}`);
-});
+// // ✅ Start server
+// const PORT = 5050;
+// app.listen(PORT, () => {
+//   console.log(`🚀 Server berjalan di http://localhost:${PORT}`);
+// });

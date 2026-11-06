@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+service-account.json
+pages/service-account.json
+lib/GOOGLE_APPLICATION_CREDENTIALS.json
+
+sa.base64
+.firebase/
