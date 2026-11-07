@@ -45,6 +45,9 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://waemandirikarya-wmk.web.app";
+// (tambahan) kode verifikasi, diisi lewat environment variable (kosong = tidak dipasang)
+const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;   // Google Search Console
+const BING_VERIFICATION = process.env.NEXT_PUBLIC_BING_VERIFICATION; // Bing Webmaster Tools
 const SITE_NAME = "PT. Wae Mandiri Karya";
 const LOGO_URL = process.env.NEXT_PUBLIC_OG_IMAGE || `${SITE_URL}/wmk-logo.jpeg`; // ganti jika path logo berbeda
 
@@ -143,6 +146,10 @@ export default function Document() {
         {/* Sitemap & hreflang */}
         <link rel="sitemap" type="application/xml" title="Sitemap" href={`${SITE_URL}/sitemap.xml`} />
         <link rel="alternate" href={SITE_URL} hrefLang="id" />
+
+        {/* (tambahan) Verifikasi Google Search Console & Bing */}
+        {GSC_VERIFICATION && <meta name="google-site-verification" content={GSC_VERIFICATION} />}
+        {BING_VERIFICATION && <meta name="msvalidate.01" content={BING_VERIFICATION} />}
       </Head>
 
       <body className="antialiased">

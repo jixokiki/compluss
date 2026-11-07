@@ -46,3 +46,5 @@ lib/GOOGLE_APPLICATION_CREDENTIALS.json
 
 sa.base64
 .firebase/
+
+!.env.example
