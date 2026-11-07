@@ -48,5 +48,3 @@ sa.base64
 .firebase/
 
 !.env.example
-
-!.env.example
